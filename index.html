@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <title>HadesScience - HadesScience的个人网站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: url('https://i.postimg.cc/MGqr1CMr/1115333.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #00f7ff;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* 轻微动态粒子背景 */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: radial-gradient(circle at center, #00f7ff33 2px, transparent 3px);
+      background-size: 40px 40px;
+      animation: moveBackground 60s linear infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+    @keyframes moveBackground {
+      from { background-position: 0 0; }
+      to { background-position: 40px 40px; }
+    }
+
+    .overlay {
+      background: rgba(0, 0, 0, 0.75);
+      min-height: 100vh;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    nav {
+      width: 100%;
+      max-width: 1000px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #00f7ff44;
+    }
+
+    nav h1 {
+      font-size: 2em;
+      color: #ffcc00;
+      letter-spacing: 2px;
+    }
+
+    .welcome-poem {
+      max-width: 1000px;
+      font-size: 1.1em;
+      font-style: italic;
+      color: #ffcc00cc;
+      margin-bottom: 30px;
+      text-align: center;
+      line-height: 1.5em;
+      user-select: none;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .hero h2 {
+      font-size: 3em;
+      color: #00f7ff;
+      letter-spacing: 1.5px;
+      text-shadow:
+        0 0 6px #00f7ffaa,
+        0 0 10px #00f7ffbb;
+    }
+
+    .hero p {
+      font-size: 1.3em;
+      color: #ffcc00;
+      margin-top: 10px;
+      user-select: none;
+    }
+
+    .card {
+      background: rgba(0, 0, 0, 0.55);
+      border: 2px solid #00f7ff;
+      border-radius: 15px;
+      padding: 30px;
+      max-width: 800px;
+      width: 100%;
+      box-shadow: 0 0 40px #00f7ff88;
+      text-align: center;
+      color: #ccc;
+    }
+
+    .avatar {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 4px solid #ffcc00;
+      margin: 0 auto 20px;
+      background: url('https://i.postimg.cc/HLgFBJKz/20240928233837.jpg') no-repeat center/cover;
+      box-shadow:
+        0 0 20px #ffcc0088,
+        0 0 40px #ffcc0044;
+      animation: breatheGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes breatheGlow {
+      0%, 100% {
+        box-shadow:
+          0 0 20px #ffcc0088,
+          0 0 40px #ffcc0044;
+      }
+      50% {
+        box-shadow:
+          0 0 30px #ffcc00cc,
+          0 0 60px #ffcc0066;
+      }
+    }
+
+    .tagline {
+      font-size: 1.3em;
+      margin-top: 10px;
+      color: #ffcc00;
+      user-select: none;
+    }
+
+    .description {
+      margin-top: 20px;
+      font-size: 1.15em;
+      color: #bbb;
+      line-height: 1.6em;
+    }
+
+    .social-links {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .social-links a {
+      color: #00f7ff;
+      border: 2px solid #00f7ff;
+      padding: 10px 18px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-size: 1em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      user-select: none;
+      font-weight: 600;
+    }
+
+    .social-links a i {
+      font-size: 1.2em;
+    }
+
+    .social-links a:hover {
+      background: #ffcc00;
+      color: #000;
+      box-shadow: 0 0 16px #ffcc00cc;
+      border-color: #ffcc00;
+    }
+
+    footer {
+      margin-top: 50px;
+      font-size: 0.9em;
+      color: #888;
+      text-align: center;
+      user-select: none;
+    }
+
+    /* 语言切换按钮样式 */
+    .language-switcher {
+      margin-top: 20px; /* Adjust spacing as needed */
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .language-switcher button {
+      background: rgba(0, 247, 255, 0.2);
+      color: #00f7ff;
+      border: 1px solid #00f7ff;
+      padding: 8px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .language-switcher button:hover {
+      background: #ffcc00; /* Changed to yellow */
+      color: #000; /* Changed to black */
+      box-shadow: 0 0 10px #ffcc00aa; /* Changed shadow to yellow */
+      border-color: #ffcc00; /* Added border color to match hover */
+    }
+
+    /* 响应式调整 */
+    @media (max-width: 600px) {
+      .hero h2 {
+        font-size: 2em;
+      }
+      .hero p {
+        font-size: 1em;
+      }
+      .card {
+        padding: 20px;
+      }
+      .social-links a {
+        padding: 8px 12px;
+        font-size: 0.9em;
+      }
+      nav h1 {
+        font-size: 1.5em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <nav>
+      <h1>HadesScience</h1>
+      <!-- Language Switcher in Nav for smaller screens if needed, or keep it below -->
+    </nav>
+
+    <div class="welcome-poem" data-lang-key="welcomePoem">
+      “数字洪流中独行，<br />
+      霓虹灯下心自明。<br />
+      万象皆可探寻，<br />
+      此处为吾灵境。”<br />
+    </div>
+
+    <section class="hero">
+      <h2 data-lang-key="heroTitle">会当凌绝顶，一览众山小</h2>
+      <p data-lang-key="heroSubtitle">热爱音乐，热爱游戏，更热爱生活 🎆</p>
+    </section>
+
+    <div class="card">
+      <div class="avatar"></div>
+      <div class="tagline" data-lang-key="tagline">HadesScience<br />
+       一位数字之海中的漫游者</div>
+      <div class="description" data-lang-key="description">
+        一位资深的《Minecraft》玩家，热爱信息技术，目前在制作Minecraft整合包（详见Modrinth）；<br />
+        喜爱航模与天文，执着于宇宙的奥秘；<br />
+        在Bilibili、Steam等视频、游戏及模组平台上活跃，并乐于分享我的发现与创造。<br />
+        这里，是我数字旅程的据点，也是我灵感火花的交汇之地。欢迎来到此处的各位！——HadesScience
+      </div>
+      <!-- Moved language-switcher outside this tagline div -->
+      <div class="tagline" data-lang-key="socialLinksTitle">
+       我的个人账号链接：
+      </div>
+      <div class="social-links">
+        <a href="https://steamcommunity.com/id/HadesScience/" target="_blank"><i class="fab fa-steam"></i>Steam</a>
+        <a href="https://space.bilibili.com/3537104449571135?spm_id_from=333.1007.0.0" target="_blank"><i class="fab fa-bilibili"></i>Bilibili</a>
+        <a href="https://www.youtube.com/@HadesScience" target="_blank"><i class="fab fa-youtube"></i>YouTube</a>
+        <a href="https://modrinth.com/user/HadesScience" target="_blank"><i class="fas fa-cubes"></i>Modrinth</a>
+        <a href="https://user.qzone.qq.com/3848415725/main" target="_blank"><i class="fab fa-qq"></i>QQ空间</a>
+        <a href="https://x.com/FatSaga" target="_blank"><i class="fab fa-twitter"></i>X（Twitter）</a>
+        <a href="https://center.mcmod.cn/850855/" target="_blank"><i class="fas fa-book"></i>MC百科</a>
+        <a href="https://www.twitch.tv/hadesscience" target="_blank"><i class="fab fa-twitch"></i>Twitch</a>
+        <a href="https://github.com/HadesScience" target="_blank"><i class="fab fa-github"></i>GitHub</a>
+        <a href="https://music.163.com/#/user/home?id=10031790985" target="_blank"><i class="fas fa-music"></i>网易云音乐</a>
+      </div>
+    </div>
+
+    <!-- Language switcher moved here, outside the card, but still visually part of the main content area -->
+    <div class="language-switcher">
+      <button onclick="setLanguage('zh')">简体中文</button>
+      <button onclick="setLanguage('en')">English</button>
+    </div>
+
+    <footer>
+      &copy; 2025 HadesScience ｜ Neon Soul, Cyber Mind
+    </footer>
+  </div>
+
+  <script>
+    // 定义多语言内容
+    const translations = {
+      zh: {
+        title: "HadesScience - HadesScience的个人网站",
+        welcomePoem: `“数字洪流中独行，<br />霓虹灯下心自明。<br />万象皆可探寻，<br />此处为吾灵境。”<br />`,
+        heroTitle: "会当凌绝顶，一览众山小",
+        heroSubtitle: "热爱音乐，热爱游戏，更热爱生活 🎆",
+        tagline: `HadesScience<br />一位数字之海中的漫游者`,
+        description: `一位资深的《Minecraft》玩家，热爱信息技术，目前在制作Minecraft整合包（详见Modrinth）；<br />
+                      喜爱航模与天文，执着于宇宙的奥秘；<br />
+                      在Bilibili、Steam等视频、游戏及模组平台上活跃，并乐于分享我的发现与创造。<br />
+                      这里，是我数字旅程的据点，也是我灵感火花的交汇之地。欢迎来到此处的各位！——HadesScience`,
+        socialLinksTitle: "我的个人账号链接：",
+      },
+      en: {
+        title: "HadesScience - HadesScience's Personal Website",
+        welcomePoem: `"Journeying alone in the digital torrent,<br />Beneath neon lights, my heart remains clear.<br />All phenomena are open to exploration,<br />This place is my spiritual realm."<br />`,
+        heroTitle: "Ascend to the peak, overlook all mountains",
+        heroSubtitle: "Love music, love games, and love life even more 🎆",
+        tagline: `HadesScience<br />A Wanderer in the Digital Sea`,
+        description: `A seasoned Minecraft player, passionate about information technology, currently creating Minecraft modpacks (see Modrinth);<br />
+                      Loves aero-modeling and astronomy, deeply committed to the mysteries of the universe;<br />
+                      Active on video, gaming, and modding platforms like Bilibili and Steam, happy to share my discoveries and creations.<br />
+                      This is the base of my digital journey, and where my sparks of inspiration converge. Welcome all who arrive here!—HadesScience`,
+        socialLinksTitle: "My Personal Account Links:",
+      }
+    };
+
+    // 设置语言的函数
+    function setLanguage(lang) {
+      document.documentElement.lang = lang; // 设置html标签的lang属性
+
+      // 更新页面标题
+      document.title = translations[lang].title;
+
+      // 更新其他文本内容
+      document.querySelectorAll('[data-lang-key]').forEach(element => {
+        const key = element.getAttribute('data-lang-key');
+        if (translations[lang][key]) {
+          element.innerHTML = translations[lang][key];
+        }
+      });
+
+      // 将当前语言保存到 localStorage，以便下次访问时记住
+      localStorage.setItem('preferredLanguage', lang);
+      console.log('Language set to:', lang); // 新增：在控制台输出当前设置的语言
+    }
+
+    // 页面加载时执行
+    document.addEventListener('DOMContentLoaded', () => {
+      // 检查 localStorage 中是否有偏好语言
+      let preferredLanguage = localStorage.getItem('preferredLanguage');
+      console.log('Preferred language from localStorage:', preferredLanguage); // 新增：输出从localStorage获取的语言
+
+      if (!preferredLanguage) {
+        // 如果没有，则根据浏览器语言设置
+        const browserLang = navigator.language.split('-')[0]; // 获取浏览器主语言，例如 "zh-CN" -> "zh"
+        console.log('Detected browser language:', browserLang); // 新增：输出检测到的浏览器语言
+        if (browserLang === 'zh') {
+          preferredLanguage = 'zh';
+        } else {
+          // 对于所有非中文的浏览器语言，都默认显示英文
+          preferredLanguage = 'en';
+        }
+      }
+      setLanguage(preferredLanguage);
+    });
+  </script>
+</body>
+</html>
