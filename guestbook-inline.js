@@ -10,7 +10,7 @@
     if (started) return;
     started = true;
     retry.hidden = true;
-    status.textContent = '正在连接页内留言编辑器…';
+    I18n.message(status, 'guest.connecting');
     const script = document.createElement('script');
     script.src = 'https://utteranc.es/client.js';
     script.setAttribute('repo', 'HadesScience/hadesscience-personal-website');
@@ -18,11 +18,11 @@
     script.setAttribute('theme', 'dark-blue');
     script.crossOrigin = 'anonymous';
     script.async = true;
-    script.onload = () => { status.textContent = '完成 GitHub 登录授权后，即可在下方编辑、预览和发布。'; };
+    script.onload = () => { I18n.message(status, 'guest.ready'); };
     script.onerror = () => {
       started = false;
       script.remove();
-      status.textContent = '留言编辑器暂时无法连接。请重试，或展开下方备用入口。';
+      I18n.message(status, 'guest.editorError');
       retry.hidden = false;
     };
     widget.append(script);
@@ -39,3 +39,4 @@
     observer.observe(section);
   } else loadEditor();
 })();
+

@@ -31,3 +31,10 @@ GitHub Pages 从 `main` 分支的根目录自动部署。修改网页后提交�
 Utterances 嵌入编辑器绑定现有 Issue #1，主题为 `dark-blue`。访客完成 GitHub OAuth 授权后，可在网页中编辑、预览和提交留言。仓库所有者必须将 [Utterances GitHub App](https://github.com/apps/utterances) 安装到本仓库；权限为元数据只读、Issues 读写。
 
 `guestbook-inline.js` 负责延迟加载编辑器、处理 OAuth 返回和连接失败重试。原生留言读取器保留在可展开的备用入口内。第三方脚本只从官方 `https://utteranc.es/client.js` 加载。
+
+
+## 多语言
+
+支持简体中文、统一繁体中文（`zh-Hant`）、英语、日语与俄语。首次访问按浏览器的语言偏好顺序匹配，均不支持时使用英语；`zh-TW`、`zh-HK`、`zh-MO` 和 `zh-Hant-*` 统一匹配同一份繁中翻译，显式 `Hans`/`Hant` 字形标记优先。页脚可手动切换并在本机保存偏好，也可选择重新跟随浏览器。
+
+`i18n.js` 包含本地翻译与语言匹配逻辑，无需第三方翻译服务。翻译覆盖页面内容、无障碍标签、搜索提示、动效与留言连接状态；留言正文保留原文，Utterances 和 GitHub 自身界面由对应服务控制。

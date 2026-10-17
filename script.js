@@ -17,14 +17,14 @@ $('#year').textContent = new Date().getFullYear();
 function closeMenu(restore = false) {
   const open = toggle.getAttribute('aria-expanded') === 'true';
   toggle.setAttribute('aria-expanded', 'false');
-  toggle.setAttribute('aria-label', '打开导航');
+  toggle.setAttribute('aria-label', I18n.t('nav.open'));
   nav.classList.remove('open');
   if (open && restore) toggle.focus();
 }
 toggle.addEventListener('click', () => {
   const open = toggle.getAttribute('aria-expanded') !== 'true';
   toggle.setAttribute('aria-expanded', String(open));
-  toggle.setAttribute('aria-label', open ? '关闭导航' : '打开导航');
+  toggle.setAttribute('aria-label', I18n.t(open ? 'nav.close' : 'nav.open'));
   nav.classList.toggle('open', open);
 });
 document.addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(true); });
@@ -75,7 +75,7 @@ function filterChannels() {
     channel.hidden = !matches;
     if (matches) count++;
   });
-  $('#channel-count').textContent = `${String(count).padStart(2, '0')} / ${channels.length} CHANNELS`;
+  I18n.message($('#channel-count'), 'search.count', {shown:String(count).padStart(2, '0'), total:channels.length});
   $('.empty-channels').hidden = count > 0;
 }
 search.addEventListener('input', filterChannels);
@@ -117,7 +117,7 @@ function syncMotion() {
   document.documentElement.dataset.motion = paused ? 'paused' : 'running';
   motionButton.setAttribute('aria-pressed', String(paused));
   motionButton.disabled = reducedMotion.matches;
-  $('[data-motion-label]').textContent = reducedMotion.matches ? '静态浏览' : (paused ? '启用动效' : '暂停动效');
+  I18n.message($('[data-motion-label]'), reducedMotion.matches ? 'motion.reduced' : (paused ? 'motion.resume' : 'motion.pause'));
   motionButton.querySelector('[data-motion-icon]').setAttribute('href', paused ? '#icon-play' : '#icon-pause');
 }
 motionButton.addEventListener('click', () => {
@@ -192,3 +192,9 @@ if (location.hash) {
 }
 window.addEventListener('hashchange', clearSectionFragment);
 
+
+
+document.addEventListener('hs-language-change', () => {
+  toggle.setAttribute('aria-label', I18n.t(toggle.getAttribute('aria-expanded') === 'true' ? 'nav.close' : 'nav.open'));
+  filterChannels(); syncMotion(); updateNavigation();
+});

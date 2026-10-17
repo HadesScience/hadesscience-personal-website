@@ -156,3 +156,18 @@ input,textarea,[contenteditable]:not([contenteditable="false"]){-webkit-user-sel
 /* The header, favicon and iOS touch icon share one vector brand mark. */
 .brand-symbol{border:0;background:transparent}
 .brand-symbol>img{display:block;width:100%;height:100%;object-fit:contain}
+
+
+/* One language control at the foot of the page, matching the mineral palette. */
+.language-settings{display:flex;align-items:center;justify-content:flex-end;gap:14px;padding:0 0 28px;color:var(--muted);font:11px var(--sans)}
+.language-settings label{letter-spacing:.04em}
+.language-settings select{max-width:230px;min-height:42px;border:1px solid #52616c;background:#202932;color:var(--paper);padding:9px 32px 9px 12px;border-radius:0;font:12px var(--sans);color-scheme:dark;cursor:pointer}
+.language-settings select:focus-visible{outline:2px solid var(--orange);outline-offset:4px}
+.navigation{gap:clamp(12px,2vw,36px)}
+html[lang="ru"] .navigation a{font-size:11px}
+html[lang="ru"] .manifesto h2{font-size:clamp(36px,4.2vw,68px)}
+html[lang="ru"] .contact-heading h2{font-size:clamp(36px,4.8vw,78px);letter-spacing:-.045em}
+html[lang="en"] .contact-heading h2{font-size:clamp(48px,6.2vw,104px)}
+html[lang="ru"] .guestbook-intro h2,html[lang="en"] .guestbook-intro h2{font-size:clamp(36px,4vw,66px)}
+.mission-tabs b,.mission-copy h3,.guestbook-editor-heading h3{overflow-wrap:anywhere}
+@media(max-width:760px){.language-settings{justify-content:space-between;padding-bottom:24px;gap:12px}.language-settings select{max-width:205px;font-size:12px}.navigation.open{gap:0}html[lang="ru"] .navigation a{font-size:16px}html[lang="ru"] .contact-heading h2{font-size:clamp(36px,10vw,64px)}html[lang="en"] .contact-heading h2{font-size:clamp(42px,12vw,72px)}html[lang="ru"] .manifesto h2{font-size:clamp(36px,9.5vw,64px)}.channel-kind{font-size:9px}}
