@@ -152,3 +152,7 @@ input,textarea,[contenteditable]:not([contenteditable="false"]){-webkit-user-sel
 .launch-arrow>.ui-icon{width:1em;height:1em}
 .motion-toggle>span:first-child{display:inline-flex;align-items:center;justify-content:center}
 .empty-orbit>.ui-icon{display:block;margin:0 auto}
+
+/* The header, favicon and iOS touch icon share one vector brand mark. */
+.brand-symbol{border:0;background:transparent}
+.brand-symbol>img{display:block;width:100%;height:100%;object-fit:contain}
