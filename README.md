@@ -18,10 +18,16 @@ GitHub Pages 从 `main` 分支的根目录自动部署。修改网页后提交�
 
 留言保存在 [Guestbook Issue #1](https://github.com/HadesScience/hadesscience-personal-website/issues/1) 的评论中。
 
-访客在网页点击「用 GitHub 账号留言」，登录 GitHub 后发表评论。网页读取真实的公开评论，发布后点击「刷新留言」即可看到。站长可在 GitHub 中管理评论；访客可编辑、删除自己的评论。
+访客在页内编辑器中完成 GitHub 登录授权后，即可输入、预览和发表评论。备用列表可读取和刷新公开评论。站长可在 GitHub 中管理评论；访客可编辑、删除自己的评论。
 
-页面不保存访问令牌、密码或其他密钥。留言按时间顺序分页读取，每页 20 条；评论正文按纯文本显示。公共 API 可能触发限流，届时页面提供重试说明与原始讨论入口。没有安装第三方评论应用，也不依赖额外服务器。
+页面不保存访问令牌、密码或其他密钥。留言按时间顺序分页读取，每页 20 条；评论正文按纯文本显示。公共 API 可能触发限流，届时页面提供重试说明与原始讨论入口。备用列表不需要额外服务器；页内编辑器使用下方说明的 Utterances GitHub App。
 
 动画可通过页面的「暂停动效」开关关闭，并遵循系统的减少动态效果设置。
 
 本地字体为 Nimbus Sans Narrow Bold 子集；许可证位于 `assets/FONT-LICENSE.txt`。
+
+## 页内留言编辑器
+
+Utterances 嵌入编辑器绑定现有 Issue #1，主题为 `github-dark`。访客完成 GitHub OAuth 授权后，可在网页中编辑、预览和提交留言。仓库所有者必须将 [Utterances GitHub App](https://github.com/apps/utterances) 安装到本仓库；权限为元数据只读、Issues 读写。
+
+`guestbook-inline.js` 负责延迟加载编辑器、处理 OAuth 返回和连接失败重试。原生留言读取器保留在可展开的备用入口内。第三方脚本只从官方 `https://utteranc.es/client.js` 加载。

@@ -74,7 +74,10 @@
 
   refresh.addEventListener('click', () => loadComments(true));
   more.addEventListener('click', () => loadComments(false));
-  if ('IntersectionObserver' in window) {
+  const readback = document.querySelector('#guestbook-readback');
+  if (readback) {
+    readback.addEventListener('toggle', () => { if (readback.open && !loaded) loadComments(true); });
+  } else if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver(entries => {
       if (entries.some(entry => entry.isIntersecting)) { observer.disconnect(); if (!loaded) loadComments(true); }
     }, {rootMargin:'200px'});

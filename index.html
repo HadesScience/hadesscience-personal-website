@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#151b21"><meta name="description" content="HadesScience 的个人探索计划。游戏、机械、数字世界与永不熄灭的好奇心。"><title>HadesScience — Personal Exploration Program</title><link rel="icon" type="image/svg+xml" href="assets/insignia.svg"><link rel="stylesheet" href="styles.css?v=github-guestbook-13"><script src="script.js?v=github-guestbook-12" defer></script><script src="guestbook.js?v=12" defer></script>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#151b21"><meta name="description" content="HadesScience 的个人探索计划。游戏、机械、数字世界与永不熄灭的好奇心。"><title>HadesScience — Personal Exploration Program</title><link rel="icon" type="image/svg+xml" href="assets/insignia.svg"><link rel="stylesheet" href="styles.css?v=inline-guestbook-14"><script src="script.js?v=github-guestbook-12" defer></script><script src="guestbook.js?v=14" defer></script><script src="guestbook-inline.js?v=14" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">跳到正文</a>
@@ -53,18 +53,25 @@
       <p class="guestbook-kicker mono">A SIGNAL FROM YOU ↗</p>
       <h2 id="guestbook-title">留下<br><span>一条讯息。</span></h2>
       <p>关于游戏、创作，或只是打声招呼。<br>每一次交流，都可能是新探索的起点。</p>
-      <a class="guestbook-write" href="https://github.com/HadesScience/hadesscience-personal-website/issues/1#new_comment_field" target="_blank" rel="noopener noreferrer"><span>用 GitHub 账号留言<small>WRITE IN THE GUESTBOOK</small></span><span aria-hidden="true">↗</span></a>
-      <p class="guestbook-notice">留言会公开展示。点击后前往 GitHub 登录并发布；发布后回到这里刷新，即可看到留言。请勿填写私人信息。</p>
+      <a class="guestbook-write" href="#guestbook-editor"><span>在这里写留言<small>WRITE RIGHT HERE</small></span><span aria-hidden="true">↗</span></a>
+      <p class="guestbook-notice">首次留言需完成 GitHub 登录授权，随后即可在页内编辑器中输入、预览和发布。留言会公开展示，请勿填写私人信息。</p>
       <a class="guestbook-thread" href="https://github.com/HadesScience/hadesscience-personal-website/issues/1" target="_blank" rel="noopener noreferrer">查看完整讨论 ↗</a>
     </div>
     <div class="guestbook-feed">
+      <div class="guestbook-editor" id="guestbook-editor" aria-labelledby="guestbook-editor-title">
+        <div class="guestbook-editor-heading"><h3 id="guestbook-editor-title">写一条讯息</h3><span class="mono">INLINE / GITHUB</span></div>
+        <p id="guestbook-inline-status" class="guestbook-inline-status" role="status" aria-live="polite">正在连接页内留言编辑器…</p>
+        <div id="guestbook-widget" class="guestbook-widget"></div>
+        <button type="button" id="guestbook-inline-retry" hidden>重新连接留言编辑器 ↻</button>
+      </div>
+      <details class="guestbook-readback" id="guestbook-readback"><summary>查看留言列表与备用入口</summary>
       <div class="guestbook-toolbar"><span class="mono">PUBLIC TRANSMISSIONS</span><button id="guestbook-refresh" type="button">刷新留言 <span aria-hidden="true">↻</span></button></div>
       <p class="guestbook-status" id="guestbook-status" role="status" aria-live="polite">滚动至此，读取公开留言。</p>
       <span class="guestbook-spinner" id="guestbook-spinner" aria-hidden="true" hidden></span>
       <div class="guestbook-empty" id="guestbook-empty" hidden><span class="empty-orbit" aria-hidden="true">↗</span><p>还没有留言。</p><small>第一条讯息，或许就来自你。</small></div>
       <div id="guestbook-messages" class="guestbook-messages" aria-label="公开留言" aria-busy="false"></div>
       <button type="button" class="guestbook-more" id="guestbook-more" hidden>继续读取留言 ↓</button>
-      <p class="guestbook-order">按发布时间排列 · 留言长期保存在 GitHub</p>
+      <p class="guestbook-order">按发布时间排列 · 留言长期保存在 GitHub</p><a class="guestbook-thread" href="https://github.com/HadesScience/hadesscience-personal-website/issues/1#new_comment_field" target="_blank" rel="noopener noreferrer">前往 GitHub 留言 ↗</a></details>
     </div>
   </div>
   <noscript><p>请<a href="https://github.com/HadesScience/hadesscience-personal-website/issues/1" target="_blank" rel="noopener noreferrer">前往 GitHub 查看和发布留言 ↗</a>。</p></noscript>
