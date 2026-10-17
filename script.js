@@ -118,7 +118,7 @@ function syncMotion() {
   motionButton.setAttribute('aria-pressed', String(paused));
   motionButton.disabled = reducedMotion.matches;
   $('[data-motion-label]').textContent = reducedMotion.matches ? '静态浏览' : (paused ? '启用动效' : '暂停动效');
-  motionButton.querySelector('[aria-hidden]').textContent = paused ? '▷' : 'Ⅱ';
+  motionButton.querySelector('[data-motion-icon]').setAttribute('href', paused ? '#icon-play' : '#icon-pause');
 }
 motionButton.addEventListener('click', () => {
   motionPaused = !motionPaused;
@@ -191,3 +191,4 @@ if (location.hash) {
   }, {once: true});
 }
 window.addEventListener('hashchange', clearSectionFragment);
+

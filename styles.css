@@ -137,3 +137,18 @@ body{background:var(--night)}.masthead{background:#192128;border-color:var(--lin
 /* Keep the interface text fixed while preserving editable controls. */
 body{-webkit-user-select:none;user-select:none}
 input,textarea,[contenteditable]:not([contenteditable="false"]){-webkit-user-select:text;user-select:text}
+
+
+/* Deterministic vector icons: no platform font or emoji rendering. */
+.icon-sprite{position:absolute;width:0;height:0;overflow:hidden;pointer-events:none}
+.ui-icon{display:inline-block;width:1em;height:1em;flex:none;vertical-align:-.125em;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:square;stroke-linejoin:miter;pointer-events:none}
+.brand-symbol>.ui-icon{width:.78em;height:.78em}
+.brand-symbol>span{display:flex;align-items:center;justify-content:center}
+.brand-symbol>span>.ui-icon{width:1em;height:1em}
+.hero .cross{display:inline-flex;align-items:center;justify-content:center;width:1em;height:1em;padding:4px;vertical-align:middle}
+.manifesto-star{width:1em;height:1em;display:block}
+.manifesto-star>.ui-icon{display:block;width:100%;height:100%;vertical-align:0}
+.ticker-group i,.marquee-group i{display:inline-flex;align-items:center;justify-content:center;flex:none}
+.launch-arrow>.ui-icon{width:1em;height:1em}
+.motion-toggle>span:first-child{display:inline-flex;align-items:center;justify-content:center}
+.empty-orbit>.ui-icon{display:block;margin:0 auto}

@@ -33,7 +33,9 @@
     const time = document.createElement('time'); time.className = 'guestbook-date';
     const date = new Date(comment.created_at);
     if (Number.isFinite(date.getTime())) { time.dateTime = date.toISOString(); time.textContent = dateFormat.format(date); }
-    const permalink = document.createElement('a'); permalink.className = 'guestbook-permalink'; permalink.href = `${thread}#issuecomment-${comment.id}`; permalink.target = '_blank'; permalink.rel = 'noopener noreferrer'; permalink.textContent = '↗'; permalink.setAttribute('aria-label', `在 GitHub 查看 ${login || '访客'} 的留言`);
+    const permalink = document.createElement('a'); permalink.className = 'guestbook-permalink'; permalink.href = `${thread}#issuecomment-${comment.id}`; permalink.target = '_blank'; permalink.rel = 'noopener noreferrer'; const arrow = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    arrow.setAttribute('class', 'ui-icon'); arrow.setAttribute('viewBox', '0 0 24 24'); arrow.setAttribute('aria-hidden', 'true'); arrow.setAttribute('focusable', 'false');
+    const arrowShape = document.createElementNS('http://www.w3.org/2000/svg', 'use'); arrowShape.setAttribute('href', '#icon-arrow-ne'); arrow.append(arrowShape); permalink.append(arrow); permalink.setAttribute('aria-label', `在 GitHub 查看 ${login || '访客'} 的留言`);
     meta.append(author,time); header.append(monogram,meta,permalink);
     const body = document.createElement('p'); body.className = 'guestbook-body'; body.textContent = typeof comment.body === 'string' ? comment.body : '';
     article.append(header,body); list.append(article);
@@ -84,3 +86,4 @@
     observer.observe(section);
   } else loadComments(true);
 })();
+
