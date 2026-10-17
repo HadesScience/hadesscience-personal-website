@@ -2,7 +2,7 @@
 
 个人主页，采用低饱和深色配色、构成主义排版与航天图形。
 
-站点：https://hadesscience.github.io/hadesscience-personal-website/
+站点：https://hadesscience.com/
 
 ## 发布
 
