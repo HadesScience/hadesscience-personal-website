@@ -15,7 +15,7 @@
     script.src = 'https://utteranc.es/client.js';
     script.setAttribute('repo', 'HadesScience/hadesscience-personal-website');
     script.setAttribute('issue-number', '1');
-    script.setAttribute('theme', 'github-dark');
+    script.setAttribute('theme', 'dark-blue');
     script.crossOrigin = 'anonymous';
     script.async = true;
     script.onload = () => { status.textContent = '完成 GitHub 登录授权后，即可在下方编辑、预览和发布。'; };
