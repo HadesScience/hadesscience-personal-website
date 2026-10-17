@@ -38,7 +38,7 @@ $$('a[href^="#"]').forEach(link => link.addEventListener('click', event => {
   closeMenu();
   target.setAttribute('tabindex', '-1');
   target.focus({preventScroll: true});
-  history.pushState(null, '', link.hash);
+  // Section navigation scrolls without adding URL fragments or history entries.
   target.scrollIntoView({behavior: reducedMotion.matches || motionPaused ? 'instant' : 'smooth'});
 }));
 function activateMission(tab, focus = false) {
@@ -178,3 +178,16 @@ document.addEventListener('copy', event => {
   if (target instanceof Element && target.closest('input, textarea, [contenteditable]:not([contenteditable="false"])')) return;
   event.preventDefault();
 });
+
+// Accept older section links, then keep the public URL free of fragments.
+function clearSectionFragment() {
+  if (location.hash) history.replaceState(history.state, '', location.pathname + location.search);
+}
+if (location.hash) {
+  const initialSection = document.getElementById(location.hash.slice(1));
+  clearSectionFragment();
+  window.addEventListener('load', () => {
+    if (initialSection) initialSection.scrollIntoView({behavior: 'instant'});
+  }, {once: true});
+}
+window.addEventListener('hashchange', clearSectionFragment);
