@@ -133,3 +133,7 @@ body{background:var(--night)}.masthead{background:#192128;border-color:var(--lin
 .guestbook-readback>summary{padding:5px 0;color:#9babb7}
 .guestbook-readback>summary:hover{color:var(--orange)}
 @media(max-width:760px){.guestbook-editor{padding:20px 14px 4px;box-shadow:4px 4px 0 #15212b}.guestbook-editor-heading h3{font-size:17px}.guestbook-editor-heading>.mono{font-size:8px}.guestbook-editor-heading>.mono>span{margin-left:5px}.guestbook-inline-status{padding-bottom:15px}}
+
+/* Keep the interface text fixed while preserving editable controls. */
+body{-webkit-user-select:none;user-select:none}
+input,textarea,[contenteditable]:not([contenteditable="false"]){-webkit-user-select:text;user-select:text}

@@ -171,3 +171,10 @@ poster.addEventListener('pointerleave', () => {
   stage.style.setProperty('--pointer-x', '0px');
   stage.style.setProperty('--pointer-y', '0px');
 });
+
+// Copy remains available inside text-entry controls.
+document.addEventListener('copy', event => {
+  const target = event.target;
+  if (target instanceof Element && target.closest('input, textarea, [contenteditable]:not([contenteditable="false"])')) return;
+  event.preventDefault();
+});
