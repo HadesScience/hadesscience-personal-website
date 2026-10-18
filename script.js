@@ -39,7 +39,7 @@ $$('a[href^="#"]').forEach(link => link.addEventListener('click', event => {
   target.setAttribute('tabindex', '-1');
   target.focus({preventScroll: true});
   // Section navigation scrolls without adding URL fragments or history entries.
-  target.scrollIntoView({behavior: reducedMotion.matches || motionPaused ? 'instant' : 'smooth'});
+  target.scrollIntoView({behavior: reducedMotion.matches ? 'instant' : 'smooth'});
 }));
 function activateMission(tab, focus = false) {
   if (tab.getAttribute('aria-selected') === 'true') { if (focus) tab.focus(); return; }
@@ -51,7 +51,7 @@ function activateMission(tab, focus = false) {
   panels.forEach(panel => { panel.hidden = panel.id !== tab.getAttribute('aria-controls'); });
   const activePanel = document.getElementById(tab.getAttribute('aria-controls'));
   activePanel.classList.remove('is-entering');
-  if (!reducedMotion.matches && !motionPaused) { void activePanel.offsetWidth; activePanel.classList.add('is-entering'); }
+  if (!reducedMotion.matches) { void activePanel.offsetWidth; activePanel.classList.add('is-entering'); }
   if (focus) tab.focus();
 }
 tabs.forEach((tab, index) => {
@@ -82,8 +82,6 @@ search.addEventListener('input', filterChannels);
 $('#reset-search').addEventListener('click', () => { search.value = ''; filterChannels(); search.focus(); });
 filterChannels();
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-let motionPaused = false;
-try { motionPaused = localStorage.getItem('hs-motion-paused') === 'true'; } catch {}
 const navLinks = $$('#navigation a');
 const sections = navLinks.map(link => document.querySelector(link.hash));
 let scheduled = false;
@@ -97,7 +95,7 @@ function updateNavigation() {
   });
   const distance = document.documentElement.scrollHeight - innerHeight;
   document.documentElement.style.setProperty('--reading-progress', distance > 0 ? Math.min(1, scrollY / distance) : 0);
-  if (!reducedMotion.matches && !motionPaused) {
+  if (!reducedMotion.matches) {
     $('.orbital-stage').style.setProperty('--scroll-drift', `${Math.min(16, Math.max(0, scrollY * 0.025))}px`);
     $$('[data-drift]').forEach(mark => {
       const position = mark.parentElement.getBoundingClientRect().top / innerHeight;
@@ -110,21 +108,10 @@ window.addEventListener('scroll', () => { if (!scheduled) { scheduled = true; re
 window.addEventListener('resize', updateNavigation);
 updateNavigation();
 
-// One motion preference controls SVGs, scrolling entrances and interaction effects.
-const motionButton = $('.motion-toggle');
+// Follow the system's reduced-motion preference without a manual toggle.
 function syncMotion() {
-  const paused = reducedMotion.matches || motionPaused;
-  document.documentElement.dataset.motion = paused ? 'paused' : 'running';
-  motionButton.setAttribute('aria-pressed', String(paused));
-  motionButton.disabled = reducedMotion.matches;
-  I18n.message($('[data-motion-label]'), reducedMotion.matches ? 'motion.reduced' : (paused ? 'motion.resume' : 'motion.pause'));
-  motionButton.querySelector('[data-motion-icon]').setAttribute('href', paused ? '#icon-play' : '#icon-pause');
+  document.documentElement.dataset.motion = reducedMotion.matches ? 'paused' : 'running';
 }
-motionButton.addEventListener('click', () => {
-  motionPaused = !motionPaused;
-  try { localStorage.setItem('hs-motion-paused', String(motionPaused)); } catch {}
-  syncMotion();
-});
 reducedMotion.addEventListener('change', syncMotion);
 syncMotion();
 
@@ -155,7 +142,7 @@ let pointerFrame = 0;
 let pointerX = 0;
 let pointerY = 0;
 poster.addEventListener('pointermove', event => {
-  if (!finePointer.matches || reducedMotion.matches || motionPaused) return;
+  if (!finePointer.matches || reducedMotion.matches) return;
   const bounds = poster.getBoundingClientRect();
   pointerX = ((event.clientX - bounds.left) / bounds.width - .5) * 28;
   pointerY = ((event.clientY - bounds.top) / bounds.height - .5) * 28;
