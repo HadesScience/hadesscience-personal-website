@@ -203,6 +203,13 @@ function setTheme(theme) {
     localStorage.setItem('hs-theme', theme);
   } catch {}
   updateThemeDisplay(theme);
+  // Swap brand insignia to match current theme
+  const brandImg = document.querySelector('.brand-symbol img');
+  if (brandImg) {
+    brandImg.src = theme === 'ivory'
+      ? '/assets/insignia-ivory.svg?v=brand-20'
+      : '/assets/insignia.svg?v=brand-20';
+  }
   document.dispatchEvent(new CustomEvent('hs-theme-change', { detail: { theme } }));
 }
 

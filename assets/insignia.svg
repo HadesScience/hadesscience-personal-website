@@ -1,1 +1,34 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" fill="#151b21"/><rect x="3" y="13" width="43" height="47" fill="none" stroke="#cfd3d5" stroke-width="3"/><path d="M13 23h6v12h12V23h6v27h-6V41H19v9h-6Z" fill="#cfd3d5"/><rect x="32" y="1" width="31" height="31" fill="#ca8c72"/><path d="M39 25 57 7M39 7h18v18" fill="none" stroke="#151b21" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <style>
+      .bg{fill:#101926;stroke:#32455c;stroke-width:2}
+      .h{fill:#e4eaf2}
+      .ac{fill:#ca8c72}
+      .ar{fill:none;stroke:#101926;stroke-width:3;stroke-linecap:square;stroke-linejoin:miter}
+      .gd{stroke:rgba(255,255,255,.07);stroke-width:.8;stroke-dasharray:2 3}
+      .mk{stroke:#506a84;stroke-width:1.2}
+      @media(prefers-color-scheme:light){
+        .bg{fill:#f4f0e6;stroke:#c5cbd4}
+        .h{fill:#14171a}
+        .ac{fill:#b84838}
+        .ar{stroke:#f4f0e6}
+        .gd{stroke:rgba(0,0,0,.06)}
+        .mk{stroke:#9aa5b0}
+      }
+    </style>
+  </defs>
+  <rect x="1" y="1" width="62" height="62" rx="7" class="bg"/>
+  <line x1="1" y1="32" x2="63" y2="32" class="gd"/>
+  <line x1="30" y1="1" x2="30" y2="63" class="gd"/>
+  <rect x="11" y="16" width="8" height="32" rx="1.5" class="h"/>
+  <rect x="27" y="25" width="8" height="23" rx="1.5" class="h"/>
+  <rect x="11" y="30" width="24" height="7" class="h"/>
+  <rect x="11" y="51" width="24" height="3" rx="1" class="ac"/>
+  <rect x="34" y="9" width="22" height="22" rx="4" class="ac"/>
+  <path d="M39 26 50 15M43 15h7v7" class="ar"/>
+  <circle cx="49" cy="46" r="2.5" class="ac"/>
+  <line x1="43" y1="46" x2="46" y2="46" class="mk"/>
+  <line x1="52" y1="46" x2="55" y2="46" class="mk"/>
+  <line x1="49" y1="40" x2="49" y2="43" class="mk"/>
+  <line x1="49" y1="49" x2="49" y2="52" class="mk"/>
+</svg>
