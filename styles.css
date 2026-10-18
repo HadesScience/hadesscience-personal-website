@@ -149,11 +149,7 @@ input,textarea,[contenteditable]:not([contenteditable="false"]){-webkit-user-sel
 .brand-symbol>img{display:block;width:100%;height:100%;object-fit:contain}
 
 
-/* One language control at the foot of the page, matching the mineral palette. */
-.language-settings{display:flex;align-items:center;justify-content:flex-end;gap:14px;padding:0 0 28px;color:var(--muted);font:11px var(--sans)}
-.language-settings label{letter-spacing:.04em}
-.language-settings select{max-width:230px;min-height:42px;border:1px solid #52616c;background:#202932;color:var(--paper);padding:9px 32px 9px 12px;border-radius:0;font:12px var(--sans);color-scheme:dark;cursor:pointer}
-.language-settings select:focus-visible{outline:2px solid var(--orange);outline-offset:4px}
+/* One language control at the foot of the page{display:flex;align-items:center;justify-content:flex-end;gap:14px;padding:0 0 28px;color:var(--muted);font:11px var(--sans)}
 .navigation{margin-left:auto;margin-right:clamp(16px,2.4vw,36px);gap:clamp(12px,2vw,36px)}
 html[lang="ru"] .navigation a{font-size:11px}
 html[lang="ru"] .manifesto h2{font-size:clamp(36px,4.2vw,68px)}
@@ -161,7 +157,7 @@ html[lang="ru"] .contact-heading h2{font-size:clamp(36px,4.8vw,78px);letter-spac
 html[lang="en"] .contact-heading h2{font-size:clamp(48px,6.2vw,104px)}
 html[lang="ru"] .guestbook-intro h2,html[lang="en"] .guestbook-intro h2{font-size:clamp(36px,4vw,66px)}
 .mission-tabs b,.mission-copy h3,.guestbook-editor-heading h3{overflow-wrap:anywhere}
-@media(max-width:760px){.language-settings{justify-content:space-between;padding-bottom:24px;gap:12px}.language-settings select{max-width:205px;font-size:12px}.navigation{margin:0}.navigation.open{gap:0}html[lang="ru"] .navigation a{font-size:16px}html[lang="ru"] .contact-heading h2{font-size:clamp(36px,10vw,64px)}html[lang="en"] .contact-heading h2{font-size:clamp(42px,12vw,72px)}html[lang="ru"] .manifesto h2{font-size:clamp(36px,9.5vw,64px)}.channel-kind{font-size:9px}}
+@media(max-width:760px){.navigation{margin:0}.navigation.open{gap:0}html[lang="ru"] .navigation a{font-size:16px}html[lang="ru"] .contact-heading h2{font-size:clamp(36px,10vw,64px)}html[lang="en"] .contact-heading h2{font-size:clamp(42px,12vw,72px)}html[lang="ru"] .manifesto h2{font-size:clamp(36px,9.5vw,64px)}.channel-kind{font-size:9px}}
 
 /* Field notes: published projects, recordings and practical tools. */
 .mission-tabs{grid-template-columns:repeat(4,minmax(0,1fr))}
@@ -870,12 +866,6 @@ html[data-theme="ivory"] .hazard-line {
     var(--ink) 36px 48px
   );
 }
-html[data-theme="ivory"] .language-settings select {
-  background: #fbf9f4;
-  border: 1px solid var(--ink);
-  color: var(--ink);
-  color-scheme: light;
-}
 
 /* =====================================================================
    SVG ANIMATIONS & GRAPHICS ADAPTATION (IVORY THEME)
@@ -1193,3 +1183,38 @@ html[data-theme="ivory"] .record-card {background-image:linear-gradient(135deg,r
   .records-heading::after {display:none}
   .footer {background-size:48px 48px}
 }
+/* Language edition selector and direct correspondence card. */
+.language-settings{display:grid;grid-template-columns:160px minmax(0,1fr);gap:28px;align-items:center;border-top:1px solid var(--detail-rule);padding:25px 0 32px;margin-top:0;min-width:0}
+.language-heading{display:flex;flex-direction:column;gap:8px;color:var(--paper);font:600 13px/1.5 var(--sans)}
+.language-heading>.mono{font-size:9px;letter-spacing:.12em;color:var(--muted);font-weight:400}
+.language-options{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:7px;min-width:0}
+.language-option{position:relative;min-height:65px;min-width:0;padding:12px 13px 10px;text-align:left;border:1px solid #4a5d6b;background:#202e39;color:#c4d0d8;transition:background .18s,border-color .18s,color .18s}
+.language-name{display:block;font:600 12px/1.5 var(--sans);padding-right:10px;overflow-wrap:anywhere}
+.language-code{display:block;margin-top:6px;font-size:8px;letter-spacing:.07em;color:#8d9faa}
+.language-check{position:absolute;right:7px;bottom:10px;width:13px;height:13px;stroke:currentColor;stroke-width:1.7;opacity:0}
+.language-option::after{content:'';position:absolute;left:-1px;right:-1px;bottom:-1px;height:3px;background:transparent}
+.language-option:hover{background:#2b3e4c;border-color:#8b9caa;color:#edf0ef}
+.language-option[aria-pressed=true]{background:#30414e;border-color:#ad9d86;color:#e7decd}
+.language-option[aria-pressed=true]::after{background:var(--orange)}
+.language-option[aria-pressed=true] .language-check{opacity:1}
+.language-option[aria-pressed=true] .language-code{color:#c4b89f}
+.language-option:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+.guestbook-email{display:flex;align-items:center;gap:15px;width:100%;max-width:400px;padding:18px 16px;margin-top:26px;border:1px solid #516675;border-left:3px solid var(--orange);background:#22323e;color:#d0dce2;transition:background .18s,border-color .18s}
+.guestbook-email .email-envelope{flex:none;width:23px;height:23px;stroke:var(--orange);stroke-width:1.3}
+.guestbook-email>span{min-width:0}
+.guestbook-email small{display:block;font:11px/1.7 var(--sans);color:#aebfc9;margin-bottom:5px}
+.guestbook-email strong{display:block;font:600 14px/1.5 var(--sans);overflow-wrap:anywhere}
+.guestbook-email>.ui-icon{margin-left:auto;flex:none;width:17px;color:var(--orange)}
+.guestbook-email:hover{background:#2c414f;border-color:#99aab5}
+html[data-theme=ivory] .language-heading{color:#14171a}
+html[data-theme=ivory] .language-option{background:#eee8da;color:#303c45;border-color:#b9b1a1}
+html[data-theme=ivory] .language-code{color:#777166}
+html[data-theme=ivory] .language-option:hover{background:#e1d9c7;border-color:#857967;color:#14171a}
+html[data-theme=ivory] .language-option[aria-pressed=true]{background:#e2d9c4;border-color:#a15844;color:#742f24}
+html[data-theme=ivory] .language-option[aria-pressed=true] .language-code{color:#895844}
+html[data-theme=ivory] .guestbook-email{background:#eee7d8;border-color:#b6aa96;border-left-color:var(--orange);color:#253543}
+html[data-theme=ivory] .guestbook-email small{color:#6b6257}
+html[data-theme=ivory] .guestbook-email:hover{background:#e3d9c5;border-color:#937e63}
+@media(max-width:1100px){.language-settings{grid-template-columns:120px minmax(0,1fr);gap:20px}.language-options{grid-template-columns:repeat(3,minmax(0,1fr))}.language-option{min-height:60px}}
+@media(max-width:760px){.language-settings{grid-template-columns:1fr;gap:17px;padding:23px 0 28px}.language-heading{flex-direction:row;justify-content:space-between;align-items:center;font-size:12px}.language-heading>.mono{font-size:8px}.language-options{gap:8px}.language-option{padding:11px 10px 10px;min-height:65px}.language-name{font-size:11px;padding-right:0}.language-code{font-size:7px;margin-top:7px}.language-check{right:5px;bottom:9px;width:12px}.guestbook-email{max-width:none;margin-top:22px;padding:16px 13px;gap:12px}.guestbook-email strong{font-size:13px}.guestbook-email small{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.language-option,.guestbook-email{transition:none}}
