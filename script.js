@@ -207,9 +207,12 @@ function setTheme(theme) {
   const brandImg = document.querySelector('.brand-symbol img');
   if (brandImg) {
     brandImg.src = theme === 'ivory'
-      ? '/assets/insignia-ivory.svg?v=brand-20'
-      : '/assets/insignia.svg?v=brand-20';
+      ? '/assets/insignia-ivory.svg?v=brand-20261018-1600'
+      : '/assets/insignia.svg?v=brand-20261018-1600';
   }
+  // Keep the tab icon on the same SVG as the current page branding.
+  const tabIcon = document.querySelector('link[rel="icon"][type="image/svg+xml"]');
+  if (tabIcon && brandImg) tabIcon.href = brandImg.src;
   document.dispatchEvent(new CustomEvent('hs-theme-change', { detail: { theme } }));
 }
 
