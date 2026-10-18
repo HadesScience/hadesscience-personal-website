@@ -207,3 +207,22 @@ html[lang="ru"] .guestbook-intro h2,html[lang="en"] .guestbook-intro h2{font-siz
 @media(min-width:761px) and (max-width:1100px){.mission-tabs button{padding:17px 12px;gap:9px}.mission-tabs b{font-size:12px}.mission-tabs small{font-size:7px}.record-grid{gap:12px}.record-card{padding:20px}.mission-records{padding:26px}}
 @media(max-width:760px){.mission-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}.mission-tabs button{flex-direction:row;align-items:center;padding:17px 14px;gap:13px;border-bottom:1px solid var(--line)}.mission-tabs button:nth-child(2){border-right:0}.mission-tabs button:nth-child(n+3){border-bottom:0}.mission-tabs b{font-size:13px}.mission-tabs small{font-size:7px}.mission-tabs .tab-arrow{display:none}.mission-records{padding:25px 20px}.records-heading{align-items:flex-start;gap:12px}.records-heading h4{font-size:13px;line-height:1.6}.records-heading>.mono{font-size:8px;padding-top:4px}.record-grid,.record-grid.two-records{grid-template-columns:1fr;gap:16px}.record-card{padding:23px}.record-top{margin-bottom:19px}.record-card h5{font-size:25px}.record-kind{font-size:9px}.record-card>p{font-size:12px}.record-link{min-height:42px}.record-card:hover{transform:none}}
 @media(prefers-reduced-motion:reduce){.tools-flow{animation:none}.record-card,.record-card::before,.record-link>span{transition:none}.record-card:hover,.record-card:focus-within{transform:none}}
+
+/* Editorial field guides connect each collection to the questions behind it. */
+.field-guide{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:46px;padding:36px 34px;border-top:1px solid var(--line);background:#1c2933;min-width:0}
+.field-guide-heading{min-width:0;border-left:3px solid var(--orange);padding-left:21px;display:flex;flex-direction:column;align-items:flex-start}
+.field-guide-label{display:block;color:#a5b9b9;font-size:10px;line-height:1.8;letter-spacing:.06em;margin-bottom:15px}
+.field-guide-label>.mono{color:#be9c87}
+.field-guide h4{font-size:clamp(20px,2vw,29px);line-height:1.45;letter-spacing:-.025em;color:#d5dce0;overflow-wrap:anywhere;margin:0 0 20px}
+.field-guide-link{display:inline-flex;align-items:center;gap:15px;color:#c4cdd2;font-size:11px;line-height:1.7;min-height:44px;margin-top:auto;padding:8px 0}
+.field-guide-link>.ui-icon{color:var(--orange);width:18px;height:18px;flex-shrink:0}
+.field-guide-link:hover{color:var(--orange)}
+.field-guide-link:focus-visible{outline:2px solid var(--orange);outline-offset:5px}
+.field-guide-notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;margin:0;min-width:0}
+.field-guide-notes>div{min-width:0}
+.field-guide dt{font-size:13px;line-height:1.7;font-weight:700;color:#c5d0d6;margin:0 0 10px}
+.field-guide dd{font-size:12px;line-height:1.95;color:#aabac5;margin:0;overflow-wrap:anywhere}
+.mission-records{scroll-margin-top:calc(var(--header) + 20px)}
+.missions>.section-heading>p{max-width:410px;margin-left:26px}
+@media(min-width:761px) and (max-width:1100px){.field-guide{gap:28px;padding:30px 26px;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr)}.field-guide-notes{grid-template-columns:1fr;gap:20px}}
+@media(max-width:760px){.field-guide{grid-template-columns:1fr;gap:24px;padding:28px 20px}.field-guide-heading{padding-left:17px}.field-guide h4{font-size:23px;max-width:32ch;margin-bottom:12px}.field-guide-label{margin-bottom:10px}.field-guide-notes{grid-template-columns:1fr;gap:22px}.field-guide-notes>div{border-top:1px solid #3c4e5b;padding-top:18px}.field-guide dt{font-size:14px;margin-bottom:8px}.field-guide dd{font-size:12px}.missions>.section-heading>p{margin-left:0;max-width:none}}
