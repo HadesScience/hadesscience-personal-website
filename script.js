@@ -233,3 +233,43 @@ document.addEventListener('hs-language-change', () => {
   filterChannels(); syncMotion(); updateNavigation();
   updateThemeDisplay(document.documentElement.dataset.theme || 'mineral');
 });
+
+// Project gallery: native dialog supplies keyboard focus containment and Escape.
+const galleryButtons = $$('[data-gallery]');
+const galleryDialog = $('.gallery-dialog');
+let galleryIndex = 0;
+let galleryTrigger;
+function displayGallery(index) {
+  galleryIndex = (index + galleryButtons.length) % galleryButtons.length;
+  const button = galleryButtons[galleryIndex];
+  const preview = button.querySelector('img');
+  $('.gallery-full-image').src = preview.src;
+  $('.gallery-full-image').alt = preview.alt;
+  $('#gallery-dialog-title').textContent = preview.alt;
+  $('.gallery-counter').textContent = `${String(galleryIndex + 1).padStart(2, '0')} / ${String(galleryButtons.length).padStart(2, '0')}`;
+  $('.gallery-original').href = button.dataset.original;
+}
+galleryButtons.forEach((button, index) => {
+  button.setAttribute('aria-label', `${I18n.t('gallery.open')}: ${button.querySelector('img').alt}`);
+  button.addEventListener('click', () => {
+    galleryTrigger = button;
+    displayGallery(index);
+    galleryDialog.showModal();
+    document.documentElement.classList.add('gallery-active');
+    $('.gallery-close').focus();
+  });
+});
+$('.gallery-close').addEventListener('click', () => galleryDialog.close());
+$('.gallery-prev').addEventListener('click', () => displayGallery(galleryIndex - 1));
+$('.gallery-next').addEventListener('click', () => displayGallery(galleryIndex + 1));
+galleryDialog.addEventListener('keydown', event => {
+  if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+    event.preventDefault();
+    displayGallery(galleryIndex + (event.key === 'ArrowRight' ? 1 : -1));
+  }
+});
+galleryDialog.addEventListener('click', event => { if (event.target === galleryDialog) galleryDialog.close(); });
+galleryDialog.addEventListener('close', () => {
+  document.documentElement.classList.remove('gallery-active');
+  galleryTrigger?.focus({preventScroll: true});
+});
