@@ -203,6 +203,7 @@ function setTheme(theme) {
     localStorage.setItem('hs-theme', theme);
   } catch {}
   updateThemeDisplay(theme);
+  document.dispatchEvent(new CustomEvent('hs-theme-change', { detail: { theme } }));
 }
 
 function initTheme() {

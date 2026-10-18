@@ -753,8 +753,8 @@ html[data-theme="ivory"] .guestbook-kicker {
 }
 html[data-theme="ivory"] .guestbook-write {
   background: #fbf9f4;
-  border: 1px solid var(--ink);
-  box-shadow: 4px 4px 0 var(--ink);
+  border: 1px solid var(--line);
+  box-shadow: 4px 4px 0 #d5cfc2;
 }
 html[data-theme="ivory"] .guestbook-write>span:first-child {
   color: var(--ink);
@@ -765,11 +765,12 @@ html[data-theme="ivory"] .guestbook-write>span:last-child {
 }
 html[data-theme="ivory"] .guestbook-write:hover {
   background: #fff;
+  border-color: var(--orange);
 }
 html[data-theme="ivory"] .guestbook-editor {
   background: #fbf9f4;
-  border: 1px solid var(--ink);
-  box-shadow: 5px 5px 0 var(--ink);
+  border: 1px solid var(--line);
+  box-shadow: 5px 5px 0 #d5cfc2;
 }
 html[data-theme="ivory"] .guestbook-editor-heading {
   border-color: var(--line);
@@ -795,7 +796,7 @@ html[data-theme="ivory"] .guestbook-toolbar button:hover {
 }
 html[data-theme="ivory"] .guestbook-empty {
   background: #fbf9f4;
-  border: 1px solid var(--ink);
+  border: 1px solid var(--line);
   color: var(--ink);
 }
 html[data-theme="ivory"] .guestbook-empty>small {
@@ -820,7 +821,7 @@ html[data-theme="ivory"] .guestbook-body {
 html[data-theme="ivory"] .guestbook-more {
   background: #fbf9f4;
   color: var(--ink);
-  border-color: var(--ink);
+  border: 1px solid var(--line);
 }
 html[data-theme="ivory"] .guestbook-more:hover {
   background: #ede8dc;
