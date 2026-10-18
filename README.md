@@ -6,9 +6,11 @@
 
 ## 发布
 
-GitHub Pages 从 `main` 分支的根目录自动部署。修改网页后提交即可，无需安装依赖或构建。`.nojekyll` 保持静态文件原样发布。
+GitHub Pages 从 `main` 分支的根目录自动部署，无需安装依赖。`.nojekyll` 保持静态文件原样发布。修改 `zh-cn/index.html` 后，运行 `node tools/build-locales.mjs` 更新其他语言入口，再一起提交。
 
-- `index.html`：页面内容与导航。
+- `zh-cn/index.html`：简体中文页面，也是内容与结构的唯一来源。
+- `index.html`：根地址的语言跳转。
+- `en/`、`zh-hant/`、`ja/`、`ru/`：由构建脚本生成的语言入口，与源码一起提交。
 - `styles.css`：响应式布局、矿物色调与动画。
 - `script.js`：导航、面板切换、搜索、动效开关。
 - `guestbook.js`：公开留言读取、刷新与分页。
@@ -35,7 +37,19 @@ Utterances 嵌入编辑器绑定现有 Issue #1，主题为 `dark-blue`。访客
 
 ## 多语言
 
-支持简体中文、统一繁体中文（`zh-Hant`）、英语、日语与俄语。首次访问按浏览器的语言偏好顺序匹配，均不支持时使用英语；`zh-TW`、`zh-HK`、`zh-MO` 和 `zh-Hant-*` 统一匹配同一份繁中翻译，显式 `Hans`/`Hant` 字形标记优先。页脚可手动切换并在本机保存偏好，也可选择重新跟随浏览器。
+支持简体中文、繁体中文（`zh-Hant`）、英语、日语与俄语，每种语言有独立路径：
+
+- 简体中文：`https://hadesscience.com/zh-cn/`
+- 繁体中文：`https://hadesscience.com/zh-hant/`
+- 英语：`https://hadesscience.com/en/`
+- 日语：`https://hadesscience.com/ja/`
+- 俄语：`https://hadesscience.com/ru/`
+
+根地址 `/` 按本机保存的偏好或浏览器语言跳转到对应路径，无法匹配时进入简体中文。`zh-TW`、`zh-HK`、`zh-MO` 和 `zh-Hant-*` 统一匹配同一份繁中翻译，显式 `Hans`/`Hant` 字形标记优先。
+
+`zh-cn/index.html` 是页面内容与结构的唯一来源，其余四个目录由 `node tools/build-locales.mjs` 生成；脚本只替换 `<html lang>`、标题、描述和 canonical。修改页面后必须重新运行脚本，否则其他语言页会停留在旧内容。
+
+每个语言页在 `<head>` 中写有自引用 `canonical` 和五种语言的 `hreflang`，`x-default` 指向简体中文。页脚切换会跳转到对应路径；「跟随浏览器」清除本机偏好并回到根地址重新匹配。文案仍由 `i18n.js` 在客户端应用，禁用 JavaScript 时各语言页只保留静态标题与描述，正文显示简体中文默认文案。
 
 `i18n.js` 包含本地翻译与语言匹配逻辑，无需第三方翻译服务。翻译覆盖页面内容、无障碍标签、搜索提示、动效与留言连接状态；留言正文保留原文，Utterances 和 GitHub 自身界面由对应服务控制。
 
