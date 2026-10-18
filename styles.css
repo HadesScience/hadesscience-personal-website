@@ -154,14 +154,14 @@ input,textarea,[contenteditable]:not([contenteditable="false"]){-webkit-user-sel
 .language-settings label{letter-spacing:.04em}
 .language-settings select{max-width:230px;min-height:42px;border:1px solid #52616c;background:#202932;color:var(--paper);padding:9px 32px 9px 12px;border-radius:0;font:12px var(--sans);color-scheme:dark;cursor:pointer}
 .language-settings select:focus-visible{outline:2px solid var(--orange);outline-offset:4px}
-.navigation{gap:clamp(12px,2vw,36px)}
+.navigation{margin-left:auto;margin-right:clamp(16px,2.4vw,36px);gap:clamp(12px,2vw,36px)}
 html[lang="ru"] .navigation a{font-size:11px}
 html[lang="ru"] .manifesto h2{font-size:clamp(36px,4.2vw,68px)}
 html[lang="ru"] .contact-heading h2{font-size:clamp(36px,4.8vw,78px);letter-spacing:-.045em}
 html[lang="en"] .contact-heading h2{font-size:clamp(48px,6.2vw,104px)}
 html[lang="ru"] .guestbook-intro h2,html[lang="en"] .guestbook-intro h2{font-size:clamp(36px,4vw,66px)}
 .mission-tabs b,.mission-copy h3,.guestbook-editor-heading h3{overflow-wrap:anywhere}
-@media(max-width:760px){.language-settings{justify-content:space-between;padding-bottom:24px;gap:12px}.language-settings select{max-width:205px;font-size:12px}.navigation.open{gap:0}html[lang="ru"] .navigation a{font-size:16px}html[lang="ru"] .contact-heading h2{font-size:clamp(36px,10vw,64px)}html[lang="en"] .contact-heading h2{font-size:clamp(42px,12vw,72px)}html[lang="ru"] .manifesto h2{font-size:clamp(36px,9.5vw,64px)}.channel-kind{font-size:9px}}
+@media(max-width:760px){.language-settings{justify-content:space-between;padding-bottom:24px;gap:12px}.language-settings select{max-width:205px;font-size:12px}.navigation{margin:0}.navigation.open{gap:0}html[lang="ru"] .navigation a{font-size:16px}html[lang="ru"] .contact-heading h2{font-size:clamp(36px,10vw,64px)}html[lang="en"] .contact-heading h2{font-size:clamp(42px,12vw,72px)}html[lang="ru"] .manifesto h2{font-size:clamp(36px,9.5vw,64px)}.channel-kind{font-size:9px}}
 
 /* Field notes: published projects, recordings and practical tools. */
 .mission-tabs{grid-template-columns:repeat(4,minmax(0,1fr))}
@@ -217,3 +217,894 @@ html[lang="ru"] .guestbook-intro h2,html[lang="en"] .guestbook-intro h2{font-siz
 .missions>.section-heading>p{max-width:410px;margin-left:26px}
 @media(min-width:761px) and (max-width:1100px){.field-guide{gap:28px;padding:30px 26px;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr)}.field-guide-notes{grid-template-columns:1fr;gap:20px}}
 @media(max-width:760px){.field-guide{grid-template-columns:1fr;gap:24px;padding:28px 20px}.field-guide-heading{padding-left:17px}.field-guide h4{font-size:23px;max-width:32ch;margin-bottom:12px}.field-guide-label{margin-bottom:10px}.field-guide-notes{grid-template-columns:1fr;gap:22px}.field-guide-notes>div{border-top:1px solid #3c4e5b;padding-top:18px}.field-guide dt{font-size:14px;margin-bottom:8px}.field-guide dd{font-size:12px}.missions>.section-heading>p{margin-left:0;max-width:none}}
+
+/* =====================================================================
+   THEME TOGGLE BUTTON
+   ===================================================================== */
+.theme-toggle {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: transparent;
+  border: 1px solid var(--line);
+  padding: 8px 12px;
+  color: inherit;
+  font: 10px/1.55 var(--mono);
+  letter-spacing: .055em;
+  text-align: left;
+  cursor: pointer;
+  margin-left: 0;
+  margin-right: 18px;
+  transition: border-color .2s, background-color .2s, color .2s;
+  flex-shrink: 0;
+}
+.theme-toggle:hover {
+  border-color: var(--orange);
+  background: rgba(255, 117, 70, 0.08);
+}
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+}
+.theme-toggle .theme-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--orange);
+  margin-top: 4px;
+  flex-shrink: 0;
+  transition: background-color .25s;
+}
+.theme-toggle b {
+  display: block;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  color: var(--paper);
+}
+
+@media(max-width: 900px) {
+  .theme-toggle {
+    margin-right: 12px;
+    padding: 6px 10px;
+    gap: 8px;
+  }
+}
+@media(max-width: 760px) {
+  .theme-toggle {
+    font-size: 8px;
+    line-height: 1.4;
+    padding: 5px 8px;
+    margin-left: auto;
+    margin-right: 10px;
+    gap: 6px;
+  }
+  .theme-toggle b {
+    font-size: 10px;
+  }
+  .header-clock {
+    margin-left: 0;
+    margin-right: 16px;
+  }
+}
+
+/* =====================================================================
+   THEME: IVORY (Avant-Garde Constructivist Light / 至上主义米白 - 柔和低饱和)
+   Foundation: #f4f0e6 (Warm rice-white paper)
+   Ink: #14171a (Asphalt black)
+   Primary Accent: #b84838 (Muted terracotta vermilion / 陶土赭红)
+   Secondary Accent: #2d4f7c (Prussian slate indigo / 普鲁士灰靛蓝)
+   Tertiary Accent: #caa048 (Warm ochre gold / 芥末赭黄)
+   ===================================================================== */
+html[data-theme="ivory"] {
+  color-scheme: light;
+  --night: #f4f0e6;
+  --surface: #ede8dc;
+  --surface-raised: #e2dccf;
+  --paper: #f4f0e6;
+  --ink: #14171a;
+  --orange: #b84838;
+  --blue: #2d4f7c;
+  --gold: #caa048;
+  --muted: #596370;
+  --line: #c5cbd4;
+  --space: #14171a;
+  --space-mid: #2b3544;
+  --signal: #2d4f7c;
+  --electric: #2d4f7c;
+  --acid: #b84838;
+  --ice: #3c6f7e;
+}
+
+html[data-theme="ivory"] body {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+html[data-theme="ivory"] ::selection {
+  background: var(--orange);
+  color: #fff;
+}
+
+/* Masthead in Ivory */
+html[data-theme="ivory"] .masthead {
+  background: var(--paper);
+  border-color: var(--ink);
+}
+html[data-theme="ivory"] .masthead::after {
+  background: linear-gradient(90deg, var(--blue) 0 50%, var(--orange) 50% 100%);
+}
+html[data-theme="ivory"] .brand,
+html[data-theme="ivory"] .brand-symbol {
+  color: var(--ink);
+  border-color: var(--ink);
+}
+html[data-theme="ivory"] .brand-symbol>span {
+  background: var(--orange);
+  color: #fff;
+}
+html[data-theme="ivory"] .brand-sub {
+  color: var(--muted);
+}
+html[data-theme="ivory"] .navigation {
+  background: var(--paper);
+  border-color: var(--ink);
+}
+html[data-theme="ivory"] .navigation a {
+  color: var(--ink);
+  border-color: var(--line);
+}
+html[data-theme="ivory"] .navigation a span {
+  color: var(--muted);
+}
+html[data-theme="ivory"] .navigation a:hover,
+html[data-theme="ivory"] .navigation a[aria-current] {
+  color: var(--orange);
+}
+html[data-theme="ivory"] .navigation a::after {
+  background: var(--orange);
+}
+html[data-theme="ivory"] .header-clock {
+  color: var(--muted);
+}
+html[data-theme="ivory"] .header-clock time {
+  color: var(--ink);
+}
+html[data-theme="ivory"] .status-dot {
+  background: var(--orange);
+}
+html[data-theme="ivory"] .theme-toggle {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+html[data-theme="ivory"] .theme-toggle:hover {
+  border-color: var(--orange);
+  background: rgba(184, 72, 56, 0.08);
+}
+html[data-theme="ivory"] .theme-toggle b {
+  color: var(--ink);
+}
+html[data-theme="ivory"] .theme-toggle .theme-dot {
+  background: var(--orange);
+}
+html[data-theme="ivory"] .menu-toggle span {
+  background: var(--ink);
+}
+
+/* Hero in Ivory */
+html[data-theme="ivory"] .hero {
+  background: radial-gradient(ellipse at 85% 28%, #e8e2d4 0, transparent 65%);
+}
+html[data-theme="ivory"] .hero-top>span:first-child {
+  color: var(--orange);
+}
+html[data-theme="ivory"] .hero-top>span:last-child {
+  color: var(--blue);
+}
+html[data-theme="ivory"] .hero .overline {
+  color: var(--ink);
+}
+html[data-theme="ivory"] .hero .cross {
+  background: var(--orange);
+  color: #fff;
+}
+html[data-theme="ivory"] .hero h1,
+html[data-theme="ivory"] .contact-heading h2 {
+  color: var(--ink);
+}
+html[data-theme="ivory"] .hero h1>span {
+  color: var(--orange);
+  text-shadow: 4px 4px 0 rgba(45, 79, 124, 0.18);
+}
+html[data-theme="ivory"] .hero-copy::after {
+  background: var(--blue);
+  color: #fff;
+}
+html[data-theme="ivory"] .hero-intro {
+  color: #2b3038;
+}
+html[data-theme="ivory"] .hero-intro p:first-child {
+  color: var(--ink);
+}
+html[data-theme="ivory"] .intro-rule {
+  background: var(--orange);
+}
+html[data-theme="ivory"] .hero-grid {
+  border-color: var(--ink);
+}
+html[data-theme="ivory"] .hero-bottom {
+  color: var(--muted);
+  border-color: var(--ink);
+}
+html[data-theme="ivory"] .hero-bottom b {
+  background: var(--ink);
+  color: var(--paper);
+}
+html[data-theme="ivory"] .poster-label,
+html[data-theme="ivory"] .poster-edge,
+html[data-theme="ivory"] .poster-plus,
+html[data-theme="ivory"] .poster-serial {
+  color: var(--ink);
+}
+html[data-theme="ivory"] .poster-label::after {
+  background: var(--orange);
+}
+
+/* Flight Ticker in Ivory - Prussian Indigo Banner */
+html[data-theme="ivory"] .flight-ticker {
+  background: var(--blue);
+  color: #fff;
+  border-color: var(--ink);
+}
+html[data-theme="ivory"] .ticker-group i {
+  color: var(--gold);
+}
+
+/* Manifesto in Ivory - Warm Parchment Base (No Dark Blocks) */
+html[data-theme="ivory"] .manifesto {
+  background-color: #ece7da;
+  background-image: linear-gradient(126deg, transparent 0 83%, rgba(45, 79, 124, 0.08) 83% 88%, transparent 88%), radial-gradient(ellipse at 90% 0, rgba(184, 72, 56, 0.08), transparent 60%);
+  color: var(--ink);
+  border-color: var(--ink);
+}
+html[data-theme="ivory"] .manifesto .section-caption {
+  color: var(--muted);
+  border-color: var(--ink);
+}
+html[data-theme="ivory"] .manifesto .section-caption>span:first-child {
+  background: var(--ink);
+  color: #fff;
+}
+html[data-theme="ivory"] .manifesto h2 {
+  color: var(--ink);
+}
+html[data-theme="ivory"] .manifesto h2 span {
+  color: var(--orange);
+}
+html[data-theme="ivory"] .manifesto-ribbon {
+  background: var(--orange);
+  color: #fff;
+  box-shadow: 6px 6px 0 var(--blue);
+}
+html[data-theme="ivory"] .manifesto-star {
+  color: var(--orange);
+}
+html[data-theme="ivory"] .manifesto-copy>p {
+  color: #3b434e;
+}
+html[data-theme="ivory"] .manifesto .manifesto-lead {
+  color: var(--ink);
+}
+html[data-theme="ivory"] .principles {
+  border-color: var(--line);
+  color: var(--ink);
+}
+html[data-theme="ivory"] .principles b {
+  color: var(--orange);
+}
+html[data-theme="ivory"] .construct-index {
+  -webkit-text-stroke: 2px var(--blue);
+  opacity: .18;
+}
+
+/* Missions in Ivory */
+html[data-theme="ivory"] .missions>.section-caption {
+  color: var(--muted);
+  border-color: var(--ink);
+}
+html[data-theme="ivory"] .missions>.section-caption>span:first-child {
+  background: var(--ink);
+  color: #fff;
+}
+html[data-theme="ivory"] .mission-index {
+  -webkit-text-stroke: 2px var(--blue);
+  opacity: .2;
+}
+html[data-theme="ivory"] .section-heading h2 {
+  color: var(--ink);
+}
+html[data-theme="ivory"] .mission-tabs {
+  background: #ece7da;
+  border-color: var(--ink);
+}
+html[data-theme="ivory"] .mission-tabs button {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+html[data-theme="ivory"] .mission-tabs button:hover {
+  background: #dfd9cb;
+}
+html[data-theme="ivory"] .mission-tabs button[aria-selected=true] {
+  color: #fff;
+}
+html[data-theme="ivory"] .mission-tabs button[data-mission=build][aria-selected=true] {
+  background: var(--orange);
+}
+html[data-theme="ivory"] .mission-tabs button[data-mission=explore][aria-selected=true] {
+  background: var(--blue);
+}
+html[data-theme="ivory"] .mission-tabs button[data-mission=create][aria-selected=true] {
+  background: #387562;
+}
+html[data-theme="ivory"] .mission-tabs button[data-mission=tools][aria-selected=true] {
+  background: #14171a;
+}
+html[data-theme="ivory"] .mission-panel {
+  background: #fbf9f4;
+  border-color: var(--ink);
+}
+html[data-theme="ivory"] .mission-visual {
+  border-color: var(--ink);
+}
+html[data-theme="ivory"] .mission-copy {
+  color: var(--ink);
+}
+html[data-theme="ivory"] .mission-copy h3 {
+  color: var(--ink);
+}
+html[data-theme="ivory"] .mission-copy>p {
+  color: #3b434e;
+}
+html[data-theme="ivory"] .mission-tags li {
+  background: #ede8dc;
+  border-color: #adb5bf;
+  color: var(--ink);
+}
+html[data-theme="ivory"] .mission-destinations,
+html[data-theme="ivory"] .panel-link {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+html[data-theme="ivory"] .mission-destinations a:first-child {
+  border-color: var(--line);
+}
+html[data-theme="ivory"] .mission-destinations>a:hover,
+html[data-theme="ivory"] .panel-link:hover {
+  color: var(--orange);
+}
+
+/* Records and Field Guide in Ivory */
+html[data-theme="ivory"] .mission-records {
+  background: #eae5d7;
+  border-color: var(--ink);
+}
+html[data-theme="ivory"] .records-heading h4 {
+  color: var(--ink);
+}
+html[data-theme="ivory"] .records-heading>.mono {
+  color: var(--muted);
+}
+html[data-theme="ivory"] .record-card {
+  background: #fbf9f4;
+  border: 1px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+html[data-theme="ivory"] .record-card::before {
+  background: var(--orange);
+}
+html[data-theme="ivory"] .record-card:hover,
+html[data-theme="ivory"] .record-card:focus-within {
+  background: #fff;
+  border-color: var(--ink);
+  box-shadow: 6px 6px 0 var(--orange);
+}
+html[data-theme="ivory"] .record-card h5 {
+  color: var(--ink);
+}
+html[data-theme="ivory"] .record-card>p {
+  color: #3e4650;
+}
+html[data-theme="ivory"] .record-top {
+  color: var(--ink);
+}
+html[data-theme="ivory"] .record-top>.mono {
+  color: var(--orange);
+}
+html[data-theme="ivory"] .record-kind {
+  color: var(--muted);
+}
+html[data-theme="ivory"] .record-meta {
+  color: var(--muted);
+}
+html[data-theme="ivory"] .record-link {
+  color: var(--ink);
+  border-color: var(--line);
+}
+html[data-theme="ivory"] .record-link:hover,
+html[data-theme="ivory"] .record-link:focus-visible {
+  color: var(--orange);
+}
+html[data-theme="ivory"] .field-guide {
+  background: #eae5d7;
+  border-color: var(--ink);
+}
+html[data-theme="ivory"] .field-guide-heading {
+  border-left-color: var(--orange);
+}
+html[data-theme="ivory"] .field-guide-label {
+  color: var(--muted);
+}
+html[data-theme="ivory"] .field-guide-label>.mono {
+  color: var(--orange);
+}
+html[data-theme="ivory"] .field-guide h4 {
+  color: var(--ink);
+}
+html[data-theme="ivory"] .field-guide-link {
+  color: var(--ink);
+}
+html[data-theme="ivory"] .field-guide dt {
+  color: var(--ink);
+}
+html[data-theme="ivory"] .field-guide dd {
+  color: #3d4550;
+}
+
+/* Interlude in Ivory - Terracotta Canvas with Ochre Type */
+html[data-theme="ivory"] .interlude {
+  background: var(--orange);
+  border-color: var(--ink);
+  color: #fff;
+}
+html[data-theme="ivory"] .marquee-group b {
+  color: var(--gold);
+}
+html[data-theme="ivory"] .marquee-group i {
+  color: var(--gold);
+}
+
+/* Contact in Ivory */
+html[data-theme="ivory"] .contact {
+  background: var(--paper);
+}
+html[data-theme="ivory"] .contact>.section-caption {
+  color: var(--muted);
+  border-color: var(--ink);
+}
+html[data-theme="ivory"] .contact>.section-caption>span:first-child {
+  background: var(--orange);
+  color: #fff;
+}
+html[data-theme="ivory"] .contact-index {
+  -webkit-text-stroke: 2px var(--orange);
+  opacity: .18;
+}
+html[data-theme="ivory"] .directory-head {
+  border-color: var(--ink);
+  color: var(--muted);
+}
+html[data-theme="ivory"] .channel {
+  border-color: var(--line);
+  color: var(--ink);
+}
+html[data-theme="ivory"] .channel::before {
+  background: var(--ink);
+}
+html[data-theme="ivory"] .channel:hover {
+  color: #f4f0e6;
+}
+html[data-theme="ivory"] .channel:hover .channel-kind,
+html[data-theme="ivory"] .channel:hover .channel-index {
+  color: #aab8c6;
+}
+html[data-theme="ivory"] .channel:hover .channel-arrow {
+  color: var(--orange);
+}
+html[data-theme="ivory"] .input-row {
+  background: #ede8dc;
+  border-color: var(--ink);
+}
+html[data-theme="ivory"] .input-row input {
+  color: var(--ink);
+}
+html[data-theme="ivory"] .input-row input::placeholder {
+  color: #79838f;
+}
+html[data-theme="ivory"] .empty-channels button {
+  color: var(--ink);
+  border-color: var(--ink);
+}
+html[data-theme="ivory"] .empty-channels button:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* Guestbook in Ivory */
+html[data-theme="ivory"] .guestbook {
+  background: #ece7db;
+  border-color: var(--ink);
+}
+html[data-theme="ivory"] .guestbook>.section-caption {
+  border-color: var(--ink);
+  color: var(--muted);
+}
+html[data-theme="ivory"] .guestbook>.section-caption>span:first-child {
+  background: var(--blue);
+  color: #fff;
+}
+html[data-theme="ivory"] .guestbook-intro h2 {
+  color: var(--ink);
+}
+html[data-theme="ivory"] .guestbook-intro>p:not(.guestbook-kicker) {
+  color: #3a424d;
+}
+html[data-theme="ivory"] .guestbook-kicker {
+  color: var(--blue);
+}
+html[data-theme="ivory"] .guestbook-write {
+  background: #fbf9f4;
+  border: 1px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+html[data-theme="ivory"] .guestbook-write>span:first-child {
+  color: var(--ink);
+}
+html[data-theme="ivory"] .guestbook-write>span:last-child {
+  background: var(--orange);
+  color: #fff;
+}
+html[data-theme="ivory"] .guestbook-write:hover {
+  background: #fff;
+}
+html[data-theme="ivory"] .guestbook-editor {
+  background: #fbf9f4;
+  border: 1px solid var(--ink);
+  box-shadow: 5px 5px 0 var(--ink);
+}
+html[data-theme="ivory"] .guestbook-editor-heading {
+  border-color: var(--line);
+}
+html[data-theme="ivory"] .guestbook-editor-heading h3 {
+  color: var(--ink);
+}
+html[data-theme="ivory"] .guestbook-editor-heading>.mono {
+  color: var(--muted);
+}
+html[data-theme="ivory"] .guestbook-inline-status {
+  color: var(--muted);
+}
+html[data-theme="ivory"] .guestbook-toolbar {
+  border-color: var(--line);
+}
+html[data-theme="ivory"] .guestbook-toolbar button {
+  border-color: var(--line);
+  color: var(--ink);
+}
+html[data-theme="ivory"] .guestbook-toolbar button:hover {
+  background: #ede8dc;
+}
+html[data-theme="ivory"] .guestbook-empty {
+  background: #fbf9f4;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+}
+html[data-theme="ivory"] .guestbook-empty>small {
+  color: var(--muted);
+}
+html[data-theme="ivory"] .guestbook-message {
+  border-color: var(--line);
+}
+html[data-theme="ivory"] .guestbook-monogram {
+  background: var(--ink);
+  color: #fff;
+}
+html[data-theme="ivory"] .guestbook-author {
+  color: var(--ink);
+}
+html[data-theme="ivory"] .guestbook-date {
+  color: var(--muted);
+}
+html[data-theme="ivory"] .guestbook-body {
+  color: #2b3038;
+}
+html[data-theme="ivory"] .guestbook-more {
+  background: #fbf9f4;
+  color: var(--ink);
+  border-color: var(--ink);
+}
+html[data-theme="ivory"] .guestbook-more:hover {
+  background: #ede8dc;
+}
+html[data-theme="ivory"] .guestbook-readback {
+  border-color: var(--line);
+}
+html[data-theme="ivory"] .guestbook-readback>summary {
+  color: var(--muted);
+}
+html[data-theme="ivory"] .guestbook-thread {
+  color: var(--blue);
+}
+
+/* Footer in Ivory - Warm Parchment with Ink Boundaries */
+html[data-theme="ivory"] .footer {
+  background: #ece7da;
+  border-top: 1px solid var(--ink);
+  color: var(--ink);
+}
+html[data-theme="ivory"] .footer-wordmark {
+  color: var(--ink);
+}
+html[data-theme="ivory"] .footer-wordmark>span:first-child {
+  color: var(--muted);
+}
+html[data-theme="ivory"] .footer-arrow {
+  color: var(--orange);
+}
+html[data-theme="ivory"] .footer-meta {
+  border-color: var(--ink);
+  color: var(--muted);
+}
+html[data-theme="ivory"] .footer-meta a {
+  color: var(--ink);
+}
+html[data-theme="ivory"] .footer-meta a:hover {
+  color: var(--orange);
+}
+html[data-theme="ivory"] .hazard-line {
+  background: repeating-linear-gradient(
+    -55deg,
+    var(--orange) 0 12px,
+    var(--blue) 12px 24px,
+    var(--gold) 24px 36px,
+    var(--ink) 36px 48px
+  );
+}
+html[data-theme="ivory"] .language-settings select {
+  background: #fbf9f4;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  color-scheme: light;
+}
+
+/* =====================================================================
+   SVG ANIMATIONS & GRAPHICS ADAPTATION (IVORY THEME)
+   Transforms all hardcoded dark SVG elements into constructivist draft art
+   ===================================================================== */
+
+/* 1. Hero Orbital Poster SVG */
+html[data-theme="ivory"] #orbital-grid path {
+  stroke: #14171a;
+  stroke-opacity: 0.12;
+}
+html[data-theme="ivory"] .orbital-art path[fill="url(#orbital-grid)"] {
+  fill: url(#orbital-grid);
+}
+html[data-theme="ivory"] .orbital-art path[stroke="#91a6c2"] {
+  stroke: #14171a;
+}
+html[data-theme="ivory"] .orbital-art rect[transform*="-17"] {
+  fill: #e3ddd0;
+  stroke: #14171a;
+  stroke-width: 1px;
+}
+html[data-theme="ivory"] .orbital-art path[fill="#aaa58d"] {
+  fill: var(--gold);
+}
+html[data-theme="ivory"] .orbital-art circle[fill="#b47760"] {
+  fill: var(--orange);
+}
+html[data-theme="ivory"] .orbital-art path[stroke-width="72"] {
+  stroke: var(--blue);
+}
+html[data-theme="ivory"] .orbital-art path[stroke="#dce6f3"] {
+  stroke: #f4f0e6;
+}
+html[data-theme="ivory"] .orbital-art circle[r="159"] {
+  fill: #fbf9f4;
+  stroke: #14171a;
+}
+html[data-theme="ivory"] .orbital-art .globe-meridians {
+  stroke: var(--blue);
+}
+html[data-theme="ivory"] #orbital-hatch path {
+  stroke: var(--blue);
+}
+html[data-theme="ivory"] .orbital-art ellipse {
+  stroke: #14171a;
+}
+html[data-theme="ivory"] .orbital-art circle[fill="#91a6c2"] {
+  fill: var(--orange);
+}
+html[data-theme="ivory"] .orbital-art circle[stroke="#91a6c2"] {
+  stroke: #14171a;
+}
+html[data-theme="ivory"] .orbital-art text {
+  fill: #14171a;
+}
+html[data-theme="ivory"] .orbital-art .orbit-satellite circle[fill] {
+  fill: var(--orange);
+}
+html[data-theme="ivory"] .orbital-art .orbit-satellite path {
+  stroke: #14171a;
+}
+html[data-theme="ivory"] .orbital-art .orbit-counter ellipse {
+  stroke: var(--blue);
+}
+html[data-theme="ivory"] .orbital-art .orbit-counter circle[fill="#aaa58d"] {
+  fill: var(--gold);
+}
+html[data-theme="ivory"] .orbital-art .orbit-counter circle[fill="#8ca5a7"] {
+  fill: var(--orange);
+}
+html[data-theme="ivory"] .orbital-art .constructive-marker path[stroke="#aaa58d"] {
+  stroke: var(--orange);
+}
+html[data-theme="ivory"] .orbital-art .constructive-marker path[fill="#4b6174"] {
+  fill: var(--blue);
+}
+
+/* 2. Build Panel Mechanical Gear Blueprint SVG */
+html[data-theme="ivory"] .blueprint {
+  background: #eae5d7;
+  color: var(--ink);
+  box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.04);
+}
+html[data-theme="ivory"] #panel-build .construct-art path[fill="#18232d"] {
+  fill: #eae5d7;
+}
+html[data-theme="ivory"] #mechanical-grid path {
+  stroke: #14171a;
+  stroke-opacity: 0.12;
+}
+html[data-theme="ivory"] #mechanical-stripes path {
+  stroke: var(--orange);
+}
+html[data-theme="ivory"] .gear-main circle[stroke-dasharray] {
+  stroke: #14171a;
+}
+html[data-theme="ivory"] .gear-main circle[stroke="#ca8c72"] {
+  stroke: var(--orange);
+}
+html[data-theme="ivory"] .gear-main circle[r="52"] {
+  stroke: var(--blue);
+}
+html[data-theme="ivory"] .gear-main circle[fill="#ca8c72"] {
+  fill: var(--orange);
+}
+html[data-theme="ivory"] .gear-main path {
+  stroke: #14171a;
+}
+html[data-theme="ivory"] .gear-secondary circle[stroke-dasharray] {
+  stroke: var(--blue);
+}
+html[data-theme="ivory"] .gear-secondary circle[stroke="#ca8c72"] {
+  stroke: var(--orange);
+}
+html[data-theme="ivory"] .gear-secondary path {
+  stroke: #14171a;
+}
+html[data-theme="ivory"] #panel-build .construct-art path[stroke="#b6c8df"] {
+  stroke: #14171a;
+}
+html[data-theme="ivory"] #panel-build .construct-art circle[fill="#ca8c72"] {
+  fill: var(--orange);
+}
+html[data-theme="ivory"] #panel-build .construct-art text {
+  fill: #14171a;
+}
+html[data-theme="ivory"] #panel-build .construct-art text[fill="#ca8c72"] {
+  fill: var(--orange);
+}
+html[data-theme="ivory"] #panel-build .diagram-scan {
+  stroke: var(--orange);
+  opacity: .8;
+}
+
+/* 3. Explore Panel Visual (World Circles) */
+html[data-theme="ivory"] .exploration {
+  background: #fbf9f4;
+}
+html[data-theme="ivory"] .world-circle {
+  border-color: #14171a;
+  background: repeating-radial-gradient(ellipse at 40% 30%, transparent 0 13px, var(--blue) 14px 15px, transparent 16px 27px);
+}
+html[data-theme="ivory"] .world-lines {
+  border-color: var(--orange);
+  background: #eae5d7;
+}
+html[data-theme="ivory"] .world-type {
+  color: #14171a;
+}
+html[data-theme="ivory"] .exploration .visual-caption {
+  color: var(--muted);
+}
+html[data-theme="ivory"] .game-log li {
+  border-bottom-color: var(--line);
+  color: var(--ink);
+}
+html[data-theme="ivory"] .game-log li>span {
+  color: var(--orange);
+}
+html[data-theme="ivory"] .game-log small {
+  color: var(--muted);
+}
+
+/* 4. Create Panel Visual (Visual Culture / Suprematist Cut) */
+html[data-theme="ivory"] .visual-culture {
+  background: #eae5d7;
+}
+html[data-theme="ivory"] .visual-disc {
+  background: var(--orange);
+}
+html[data-theme="ivory"] .visual-slash {
+  background: var(--blue);
+}
+html[data-theme="ivory"] .visual-word {
+  color: #fff;
+  mix-blend-mode: difference;
+}
+html[data-theme="ivory"] .visual-culture .visual-caption {
+  color: var(--muted);
+}
+
+/* 5. Tools Panel Visual (Code Workflow Diagram SVG) */
+html[data-theme="ivory"] .mission-visual.tools-visual {
+  background: #eae5d7;
+}
+html[data-theme="ivory"] #panel-tools .construct-art path[fill="#1b2933"] {
+  fill: #eae5d7;
+}
+html[data-theme="ivory"] #tools-grid path {
+  stroke: #14171a;
+  stroke-opacity: 0.12;
+}
+html[data-theme="ivory"] #panel-tools .construct-art path[stroke-width="72"] {
+  stroke: #e2dbcb;
+}
+html[data-theme="ivory"] #panel-tools .construct-art rect[fill="#17232c"] {
+  fill: #fbf9f4;
+  stroke: #14171a;
+  stroke-width: 2px;
+}
+html[data-theme="ivory"] #panel-tools .construct-art path[stroke="#90a1aa"] {
+  stroke: #14171a;
+}
+html[data-theme="ivory"] #panel-tools .construct-art circle[fill="#bf8e79"] {
+  fill: var(--orange);
+}
+html[data-theme="ivory"] #panel-tools .construct-art circle[fill="#aaa58d"] {
+  fill: var(--gold);
+}
+html[data-theme="ivory"] #panel-tools .construct-art circle[fill="#8ca5a7"] {
+  fill: var(--blue);
+}
+html[data-theme="ivory"] #panel-tools .construct-art path[stroke="#bf8e79"] {
+  stroke: var(--blue);
+}
+html[data-theme="ivory"] #panel-tools .construct-art path[stroke="#677c8c"] {
+  stroke: #14171a;
+}
+html[data-theme="ivory"] #panel-tools .tools-flow {
+  stroke: var(--orange);
+}
+html[data-theme="ivory"] #panel-tools .construct-art path[fill="#8ca5a7"] {
+  fill: #14171a;
+}
+html[data-theme="ivory"] #panel-tools .construct-art text {
+  fill: #14171a;
+}
+html[data-theme="ivory"] .tools-visual .visual-caption {
+  color: var(--muted);
+}
+
+

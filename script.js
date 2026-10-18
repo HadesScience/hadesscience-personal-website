@@ -179,9 +179,51 @@ if (location.hash) {
 }
 window.addEventListener('hashchange', clearSectionFragment);
 
+// Theme management: 'mineral' (Current dark mineral theme) and 'ivory' (Avant-garde rice-white light theme)
+const themeToggle = $('#theme-toggle');
+const themeStatus = $('#theme-status');
+const metaThemeColor = $('meta[name="theme-color"]');
 
+function updateThemeDisplay(theme) {
+  if (themeStatus) {
+    const key = theme === 'ivory' ? 'theme.ivory' : 'theme.mineral';
+    themeStatus.textContent = I18n.t(key) || (theme === 'ivory' ? 'IVORY' : 'MINERAL');
+  }
+  if (themeToggle) {
+    themeToggle.setAttribute('aria-label', I18n.t('theme.toggle') || '切换主题风格');
+  }
+  if (metaThemeColor) {
+    metaThemeColor.setAttribute('content', theme === 'ivory' ? '#f4f0e6' : '#151b21');
+  }
+}
+
+function setTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+  try {
+    localStorage.setItem('hs-theme', theme);
+  } catch {}
+  updateThemeDisplay(theme);
+}
+
+function initTheme() {
+  let theme = 'mineral';
+  try {
+    const saved = localStorage.getItem('hs-theme');
+    if (saved === 'ivory' || saved === 'mineral') theme = saved;
+  } catch {}
+  setTheme(theme);
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const current = document.documentElement.dataset.theme || 'mineral';
+      const next = current === 'ivory' ? 'mineral' : 'ivory';
+      setTheme(next);
+    });
+  }
+}
+initTheme();
 
 document.addEventListener('hs-language-change', () => {
   toggle.setAttribute('aria-label', I18n.t(toggle.getAttribute('aria-expanded') === 'true' ? 'nav.close' : 'nav.open'));
   filterChannels(); syncMotion(); updateNavigation();
+  updateThemeDisplay(document.documentElement.dataset.theme || 'mineral');
 });
