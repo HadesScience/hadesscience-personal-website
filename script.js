@@ -197,39 +197,34 @@ function updateThemeDisplay(theme) {
   }
 }
 
-function setTheme(theme) {
+function setTheme(theme, remember = false) {
   document.documentElement.dataset.theme = theme;
   try {
-    localStorage.setItem('hs-theme', theme);
+    if (remember) localStorage.setItem('hs-theme-preference', theme);
   } catch {}
   updateThemeDisplay(theme);
-  // Swap brand insignia to match current theme
-  const brandImg = document.querySelector('.brand-symbol img');
-  if (brandImg) {
-    brandImg.src = theme === 'ivory'
-      ? '/assets/insignia-ivory.svg?v=brand-20261018-1600'
-      : '/assets/insignia.svg?v=brand-20261018-1600';
-  }
-  // Keep the tab icon on the same SVG as the current page branding.
-  const tabIcon = document.querySelector('link[rel="icon"][type="image/svg+xml"]');
-  if (tabIcon && brandImg) tabIcon.href = brandImg.src;
   document.dispatchEvent(new CustomEvent('hs-theme-change', { detail: { theme } }));
 }
 
-function initTheme() {
-  let theme = 'mineral';
+const systemTheme = matchMedia('(prefers-color-scheme: dark)');
+function readThemePreference() {
   try {
-    const saved = localStorage.getItem('hs-theme');
-    if (saved === 'ivory' || saved === 'mineral') theme = saved;
-  } catch {}
-  setTheme(theme);
+    const saved = localStorage.getItem('hs-theme-preference');
+    return saved === 'ivory' || saved === 'mineral' ? saved : null;
+  } catch { return null; }
+}
+function detectedTheme() { return systemTheme.matches ? 'mineral' : 'ivory'; }
+function initTheme() {
+  setTheme(readThemePreference() || detectedTheme());
   if (themeToggle) {
     themeToggle.addEventListener('click', () => {
-      const current = document.documentElement.dataset.theme || 'mineral';
-      const next = current === 'ivory' ? 'mineral' : 'ivory';
-      setTheme(next);
+      const current = document.documentElement.dataset.theme || detectedTheme();
+      setTheme(current === 'ivory' ? 'mineral' : 'ivory', true);
     });
   }
+  systemTheme.addEventListener('change', () => {
+    if (!readThemePreference()) setTheme(detectedTheme());
+  });
 }
 initTheme();
 
