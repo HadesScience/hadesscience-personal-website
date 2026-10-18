@@ -44,7 +44,7 @@
 :root[data-motion=paused] .orbital-stage{transform:none;transition:none}
 @keyframes orbital-turn{to{transform:rotate(360deg)}}
 @keyframes entry-lift{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-@keyframes title-arrival{from{opacity:0;transform:translateY(28px);clip-path:inset(100% 0 0 0)}to{opacity:1;transform:translateY(0);clip-path:inset(0 0 0 0)}}
+@keyframes title-arrival{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
 @keyframes poster-arrival{from{opacity:0;transform:translateY(20px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
 @keyframes rule-draw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @keyframes panel-copy-in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
