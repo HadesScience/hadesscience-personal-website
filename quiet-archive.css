@@ -106,3 +106,25 @@ html[data-theme] .menu-toggle span{background:var(--ink)}
 html[data-theme] .orbital-art{color:var(--orange)}
 html[data-theme] .hero .orbital-art ellipse{stroke:var(--orange)}
 html[data-theme] .section>.section-caption>span:first-child{background:none;color:var(--muted);transform:none}
+
+/* Fine gold edges frame the artwork and indicate the active section. */
+html[data-theme="ivory"] { --archive-gold-edge: #b3a184; }
+html[data-theme="mineral"] { --archive-gold-edge: #9d8c6e; }
+
+html[data-theme] .orbital-poster {
+  border: 1px solid var(--archive-gold-edge);
+}
+
+html[data-theme] .save-frame {
+  border: 1px solid var(--archive-gold-edge);
+}
+
+html[data-theme] .save-frame figcaption {
+  padding-inline: 12px;
+  border-bottom: 0;
+}
+
+html[data-theme] .mission-tabs button[aria-selected="true"] {
+  box-shadow: inset 0 0 0 1px var(--archive-gold-edge);
+  border-bottom-color: transparent;
+}
