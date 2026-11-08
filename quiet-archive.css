@@ -1,0 +1,108 @@
+/* Quiet Archive: a restrained editorial layer over the existing functional site. */
+html[data-theme="ivory"]{--paper:#f7f6f2;--ink:#293238;--muted:#647078;--line:#d7dbda;--orange:#637c89;--blue:#637c89;--gold:#a39372;--acid:#a39372;--surface:#eeefeb;--card:#fafaf7;--detail-rule:#a9b5b8;--detail-faint:#dce0dc;--detail-sheet:#eeefeb;--detail-text:#647078;--detail-blue:#b5c0c3;--detail-disc:#e2e6e3}
+html[data-theme="mineral"]{--paper:#1b2226;--ink:#e1e3df;--muted:#a5afb2;--line:#3c484e;--orange:#a7bbc3;--blue:#a7bbc3;--gold:#b3a486;--acid:#b3a486;--surface:#232d32;--card:#20292e;--detail-rule:#64767f;--detail-faint:#36434a;--detail-sheet:#232d32;--detail-text:#a5afb2;--detail-blue:#64767f;--detail-disc:#36434a}
+html[data-theme] body{background:var(--paper);color:var(--ink)}
+html[data-theme] .masthead{background:var(--paper);border-bottom:1px solid var(--line);box-shadow:none;height:88px;padding-inline:6%}
+html[data-theme] .brand{font-weight:500;letter-spacing:.08em;font-size:14px;gap:14px}
+html[data-theme] .brand-symbol{border:0;background:transparent;width:38px;height:38px}
+html[data-theme] .brand-symbol img{filter:grayscale(1);opacity:.8}
+html[data-theme="mineral"] .brand-symbol img{filter:grayscale(1) invert(1)}
+html[data-theme] .brand-sub{letter-spacing:.1em;font-size:7px}
+html[data-theme] .navigation{gap:25px}
+html[data-theme] .navigation a{font-weight:400;color:var(--ink)}
+html[data-theme] .navigation a::after{height:1px;background:var(--gold)}
+html[data-theme] .theme-toggle{border-color:var(--line);color:var(--muted);background:transparent}
+html[data-theme] .theme-toggle b,html[data-theme] .header-clock{color:var(--muted)}
+html[data-theme] .status-dot{background:var(--gold);box-shadow:none;animation:none}
+html[data-theme] .hero{background:var(--paper);padding-inline:6%}
+html[data-theme] .hero-top{padding-block:24px;color:var(--muted);border-bottom:1px solid var(--line)}
+html[data-theme] .hero-top>span{color:var(--muted);font-size:9px;letter-spacing:.16em}
+html[data-theme] .hero-grid{min-height:610px;grid-template-columns:1.08fr 1fr;border-color:var(--line);gap:30px}
+html[data-theme] .hero-copy{padding:76px 0 64px}
+html[data-theme] .hero .overline{font-size:12px;font-weight:400;letter-spacing:.15em;color:var(--muted)}
+html[data-theme] .hero .cross{background:transparent;color:var(--gold);padding:0}
+html[data-theme] h1{font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(64px,7.8vw,120px);letter-spacing:-.06em;line-height:1.05;margin:32px 0 35px;color:var(--ink);text-shadow:none}
+html[data-theme] .hero h1>span{color:var(--orange);font-style:italic;text-shadow:none}
+html[data-theme] .hero-intro{color:var(--muted);font-size:14px;line-height:2}
+html[data-theme] .hero-intro p:first-child{font-size:17px;color:var(--ink);font-weight:400;margin-bottom:9px}
+html[data-theme] .intro-rule{height:1px;width:28px;background:var(--gold)}
+html[data-theme] .hero-bottom{border-color:var(--line);color:var(--muted);padding-block:24px;font-size:9px;letter-spacing:.13em}
+html[data-theme] .hero-bottom b{background:transparent;color:var(--ink);border:1px solid var(--line);font-weight:400}
+html[data-theme] .hero-copy::after,html[data-theme] .hero-grid::before,html[data-theme] .hero-top::after,html[data-theme] .hero-bottom::after{display:none}
+html[data-theme] .vector-register{display:none}
+html[data-theme] .orbital-poster{margin:36px 0;align-self:center;aspect-ratio:1/1;background:transparent;border:0;box-shadow:none;transform:none}
+html[data-theme] .orbital-stage{height:100%;background:transparent;transform:none;animation:none}
+html[data-theme] .orbital-art{height:100%;width:100%;transform:none;animation:none}
+html[data-theme] .orbital-poster::before,html[data-theme] .orbital-poster::after,html[data-theme] .poster-edge,html[data-theme] .poster-plus{display:none}
+html[data-theme] .poster-label{top:12px;left:12px;color:var(--muted);font-size:9px;font-weight:400;line-height:1.8}
+html[data-theme] .poster-serial{bottom:8px;left:12px;color:var(--muted);font-size:8px;letter-spacing:.1em}
+html[data-theme] .flight-ticker,html[data-theme] .interlude,html[data-theme] .hazard-line{display:none}
+html[data-theme] .section{padding:90px 6%}
+html[data-theme] .section-caption{color:var(--muted);border-color:var(--line);font-size:10px;letter-spacing:.1em;margin-bottom:52px}
+html[data-theme] .section-caption>span:first-child{background:transparent;color:var(--muted);padding:0}
+html[data-theme] h2,html[data-theme] .mission-copy h3,html[data-theme] .gallery-heading h3,html[data-theme] .trail-entry h3{font-family:Georgia,'Songti SC','Noto Serif CJK SC',SimSun,serif;font-weight:400;letter-spacing:.015em}
+html[data-theme] .manifesto,html[data-theme] .virtual-trail,html[data-theme] .guestbook{background:var(--surface);color:var(--ink);border-color:var(--line)}
+html[data-theme] .manifesto h2{font-size:clamp(36px,4.4vw,64px);line-height:1.45}
+html[data-theme] .manifesto h2 span{color:var(--orange)}
+html[data-theme] .manifesto-copy>p,html[data-theme] .manifesto-copy>.manifesto-lead{color:var(--muted);font-weight:400;font-size:16px;line-height:2.1}
+html[data-theme] .manifesto-copy>.manifesto-lead{font-size:20px;color:var(--ink)}
+html[data-theme] .composition-study{opacity:.5;width:230px}
+html[data-theme] .manifesto-star{display:none}
+html[data-theme] .principles{border-color:var(--line);color:var(--muted)}
+html[data-theme] .missions,html[data-theme] .contact{background:var(--paper);color:var(--ink)}
+html[data-theme] .mission-tabs{border:0;border-bottom:1px solid var(--line);box-shadow:none;gap:0}
+html[data-theme] .mission-tabs button{background:transparent;color:var(--muted);border:0;border-bottom:2px solid transparent;padding:23px 18px}
+html[data-theme] .mission-tabs button[aria-selected=true]{background:var(--surface);color:var(--ink);border-bottom-color:var(--gold)}
+html[data-theme] .mission-tabs button:hover{background:var(--surface)}
+html[data-theme] .tab-number{font-family:Georgia,serif;font-size:23px;font-weight:400;color:var(--muted)}
+html[data-theme] .mission-tabs b{font-weight:500;font-size:15px}
+html[data-theme] .mission-tabs small{font-size:8px;color:var(--muted)}
+html[data-theme] .mission-panel{border:1px solid var(--line);background:transparent}
+html[data-theme] .mission-copy{background:none}
+html[data-theme] .mission-copy h3{font-size:clamp(28px,3vw,43px);line-height:1.45;color:var(--ink)}
+html[data-theme] .mission-copy>p{color:var(--muted);font-size:14px;line-height:2}
+html[data-theme] .mission-visual{filter:grayscale(.92);border-color:var(--line)}
+html[data-theme] .field-guide{background:var(--surface);border-color:var(--line)}
+html[data-theme] .field-guide dd,html[data-theme] .field-guide-label{color:var(--muted)}
+html[data-theme] .field-guide h4,html[data-theme] .field-guide dt,html[data-theme] .field-guide-link{color:var(--ink)}
+html[data-theme] .mission-records{background:transparent;border-color:var(--line)}
+html[data-theme] .record-card{background:var(--card);background-image:none;border:1px solid var(--line);box-shadow:none;transition:transform .2s,border-color .2s}
+html[data-theme] .record-card:hover{border-color:var(--orange);transform:translateY(-3px);box-shadow:none}
+html[data-theme] .record-card h5{color:var(--ink);font-weight:500;font-size:19px}
+html[data-theme] .record-card p,html[data-theme] .record-meta,html[data-theme] .record-kind{color:var(--muted)}
+html[data-theme] .record-link{color:var(--ink);border-color:var(--line)}
+html[data-theme] .record-top::after,html[data-theme] .records-heading::after{display:none}
+html[data-theme] .record-top>.mono{background:none;border:0;color:var(--muted)}
+html[data-theme] .virtual-trail,html[data-theme] .save-gallery{--archive-text:var(--ink);--archive-muted:var(--muted);--archive-line:var(--line);--archive-surface:var(--card);--archive-accent:var(--orange)}
+html[data-theme] .save-frame{background:var(--card);border:0}
+html[data-theme] .save-frame figcaption{padding:15px 0;color:var(--muted);border-bottom:1px solid var(--line)}
+html[data-theme] .save-gallery-grid{gap:24px}
+html[data-theme] .trail-entry{border-color:var(--line)}
+html[data-theme] .contact-heading h2{font-size:clamp(44px,5.5vw,80px);font-weight:400;color:var(--ink)}
+html[data-theme] .channel{background:none;color:var(--ink);border-color:var(--line)}
+html[data-theme] .channel::before{background:var(--surface)}
+html[data-theme] .channel:hover,html[data-theme] .channel:hover .channel-kind,html[data-theme] .channel:hover .channel-index{color:var(--ink)}
+html[data-theme] .channel-kind,html[data-theme] .channel-index,html[data-theme] .directory-head{color:var(--muted)}
+html[data-theme] .input-row{background:transparent;border-color:var(--line)}
+html[data-theme] .input-row input{color:var(--ink)}
+html[data-theme] .guestbook-editor,html[data-theme] .guestbook-empty,html[data-theme] .guestbook-more{background:var(--card);color:var(--ink);border:1px solid var(--line);box-shadow:none}
+html[data-theme] .guestbook-intro h2,html[data-theme] .guestbook-editor-heading h3{color:var(--ink)}
+html[data-theme] .guestbook-intro>p:not(.guestbook-kicker),html[data-theme] .guestbook-inline-status{color:var(--muted)}
+html[data-theme] .guestbook-email{background:transparent;border-color:var(--line);border-left:1px solid var(--gold);color:var(--ink)}
+html[data-theme] .guestbook-email small{color:var(--muted)}
+html[data-theme] .footer{background:var(--paper);background-image:none;color:var(--ink);border-color:var(--line);padding-inline:6%}
+html[data-theme] .footer-wordmark{font-family:Georgia,serif;font-weight:400;letter-spacing:.02em;color:var(--ink)}
+html[data-theme] .footer-wordmark>span:first-child{color:var(--muted)}
+html[data-theme] .footer-meta,html[data-theme] .language-heading{color:var(--muted)}
+html[data-theme] .language-option{background:transparent;border-color:var(--line);color:var(--ink)}
+html[data-theme] .language-option:hover,html[data-theme] .language-option[aria-pressed=true]{background:var(--surface);color:var(--ink);border-color:var(--orange)}
+html[data-theme] .language-code,html[data-theme] .language-option[aria-pressed=true] .language-code{color:var(--muted)}
+@media(min-width:1600px){html[data-theme] .hero,html[data-theme] .section,html[data-theme] .masthead,html[data-theme] .footer{padding-inline:max(6%,calc((100vw - 1400px)/2))}}
+@media(max-width:1100px){html[data-theme] .hero-grid{min-height:500px;gap:16px}html[data-theme] .hero-copy{padding-top:60px}html[data-theme] .header-clock{display:none}html[data-theme] .navigation{gap:16px}}
+@media(max-width:760px){html[data-theme] .masthead{height:74px;padding-inline:6%}html[data-theme] .navigation{background:var(--paper);border-color:var(--line)}html[data-theme] .hero-grid{grid-template-columns:1fr;gap:0;min-height:0}html[data-theme] .hero-copy{padding:48px 0 16px}html[data-theme] h1{font-size:clamp(56px,13.5vw,90px);margin-block:25px}html[data-theme] .hero-top{padding-block:18px}html[data-theme] .hero-top>span{font-size:8px}html[data-theme] .hero-top>span:last-child{display:none}html[data-theme] .orbital-poster{width:100%;max-width:420px;margin:15px auto 28px;aspect-ratio:1.2/1}html[data-theme] .hero-bottom{font-size:8px;gap:16px}html[data-theme] .section{padding:58px 6%}html[data-theme] .section-caption{margin-bottom:32px;font-size:9px}html[data-theme] .manifesto h2{font-size:35px}html[data-theme] .mission-tabs button{padding:16px 10px;gap:10px}html[data-theme] .tab-number{font-size:20px}html[data-theme] .mission-tabs b{font-size:13px}html[data-theme] .mission-tabs small{font-size:7px}html[data-theme] .tab-arrow{display:none}html[data-theme] .save-gallery-grid{gap:22px}html[data-theme] .contact-heading h2{font-size:44px}html[data-theme] .footer-wordmark{font-size:clamp(27px,8vw,45px)}}
+@media(prefers-reduced-motion:reduce){html[data-theme] .record-card{transition:none}html[data-theme] .record-card:hover{transform:none}}
+html[data-theme] .brand,html[data-theme] .brand-sub{color:var(--ink)}
+html[data-theme] .menu-toggle span{background:var(--ink)}
+html[data-theme] .orbital-art{color:var(--orange)}
+html[data-theme] .hero .orbital-art ellipse{stroke:var(--orange)}
+html[data-theme] .section>.section-caption>span:first-child{background:none;color:var(--muted);transform:none}

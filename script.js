@@ -193,7 +193,7 @@ function updateThemeDisplay(theme) {
     themeToggle.setAttribute('aria-label', I18n.t('theme.toggle') || '切换主题风格');
   }
   if (metaThemeColor) {
-    metaThemeColor.setAttribute('content', theme === 'ivory' ? '#f4f0e6' : '#151b21');
+    metaThemeColor.setAttribute('content', theme === 'ivory' ? '#f7f6f2' : '#1b2226');
   }
 }
 
