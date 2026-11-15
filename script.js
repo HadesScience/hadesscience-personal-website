@@ -136,7 +136,7 @@ reducedMotion.addEventListener('change', syncMotion);
 syncMotion();
 
 if ('IntersectionObserver' in window) {
-  const revealTargets = $$('.manifesto .section-caption,.manifesto-title,.manifesto-copy>p,.principles,.missions>.section-caption,.section-heading,.mission-tabs,.contact>.section-caption,.contact-heading,.directory-head,.channel,.footer-wordmark');
+  const revealTargets = $$('.manifesto .section-caption,.manifesto-title,.manifesto-copy>p,.principles,.virtual-trail .section-caption,.trail-heading,.trail-entry,.missions>.section-caption,.section-heading,.gallery-heading,.save-frame,.mission-tabs,.contact>.section-caption,.contact-heading,.directory-head,.channel,.guestbook .section-caption,.guestbook-intro,.guestbook-editor,.guestbook-email,.footer-wordmark');
   const entranceObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
@@ -144,9 +144,15 @@ if ('IntersectionObserver' in window) {
       entranceObserver.unobserve(entry.target);
     });
   }, {threshold: 0.08, rootMargin: '0px 0px -20px 0px'});
+  let trailDelay = 0;
+  let frameDelay = 0;
   revealTargets.forEach((target, index) => {
     target.dataset.reveal = '';
-    target.style.setProperty('--reveal-delay', `${target.classList.contains('channel') ? (index % 2) * 60 : 0}ms`);
+    let delay = 0;
+    if (target.classList.contains('channel')) delay = (index % 2) * 60;
+    else if (target.classList.contains('trail-entry')) delay = (trailDelay++) * 70;
+    else if (target.classList.contains('save-frame')) delay = (frameDelay++) * 90;
+    target.style.setProperty('--reveal-delay', `${delay}ms`);
     entranceObserver.observe(target);
   });
   document.documentElement.classList.add('motion-ready');
@@ -263,8 +269,11 @@ function displayGallery(index) {
   galleryIndex = (index + galleryButtons.length) % galleryButtons.length;
   const button = galleryButtons[galleryIndex];
   const preview = button.querySelector('img');
-  $('.gallery-full-image').src = preview.src;
-  $('.gallery-full-image').alt = preview.alt;
+  const fullImage = $('.gallery-full-image');
+  fullImage.src = preview.src;
+  fullImage.alt = preview.alt;
+  fullImage.classList.remove('is-switching');
+  if (!reducedMotion.matches) { void fullImage.offsetWidth; fullImage.classList.add('is-switching'); }
   $('#gallery-dialog-title').textContent = preview.alt;
   $('.gallery-counter').textContent = `${String(galleryIndex + 1).padStart(2, '0')} / ${String(galleryButtons.length).padStart(2, '0')}`;
   if (showInternationalLinks) $('.gallery-original').href = button.dataset.original;
