@@ -14,7 +14,7 @@ html[data-theme] .navigation a{font-weight:400;color:var(--ink)}
 html[data-theme] .navigation a::after{height:1px;background:var(--gold)}
 html[data-theme] .theme-toggle{border-color:var(--line);color:var(--muted);background:transparent}
 html[data-theme] .theme-toggle b,html[data-theme] .header-clock{color:var(--muted)}
-html[data-theme] .status-dot{background:var(--gold);box-shadow:none;animation:none}
+html[data-theme] .status-dot{background:var(--gold);box-shadow:none;animation:archive-dot-breathe 3.6s ease-in-out infinite}
 html[data-theme] .hero{background:var(--paper);padding-inline:6%}
 html[data-theme] .hero-top{padding-block:24px;color:var(--muted);border-bottom:1px solid var(--line)}
 html[data-theme] .hero-top>span{color:var(--muted);font-size:9px;letter-spacing:.16em}
@@ -128,4 +128,137 @@ html[data-theme] .save-frame figcaption {
 html[data-theme] .mission-tabs button[aria-selected="true"] {
   box-shadow: inset 0 0 0 1px var(--archive-gold-edge);
   border-bottom-color: transparent;
+}
+
+/* Quiet Archive restrained animations */
+@keyframes archive-dot-breathe {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .45; transform: scale(.86); }
+}
+@keyframes archive-orbit-spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes archive-orbit-breathe {
+  0%, 100% { stroke-opacity: .9; }
+  50% { stroke-opacity: .42; }
+}
+@keyframes archive-route-draw {
+  from { stroke-dashoffset: 480; }
+  to { stroke-dashoffset: 0; }
+}
+@keyframes archive-node-appear {
+  from { opacity: 0; transform: scale(.4); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes archive-dialog-in {
+  from { opacity: 0; transform: translateY(10px) scale(.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes archive-image-swap {
+  from { opacity: .42; transform: scale(.988); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+html[data-theme] .orbital-art circle[stroke-dasharray="2 7"] {
+  transform-origin: 300px 300px;
+  animation: archive-orbit-spin 96s linear infinite;
+}
+html[data-theme] .hero .orbital-art > ellipse {
+  animation: archive-orbit-breathe 7.5s ease-in-out infinite;
+}
+html[data-theme] .orbital-art > path[stroke="var(--gold)"] {
+  stroke-dasharray: 480;
+  stroke-dashoffset: 0;
+  animation: archive-route-draw 1.45s cubic-bezier(.16, 1, .3, 1) .15s both;
+}
+html[data-theme] .orbital-art g[stroke="var(--gold)"] circle {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: archive-node-appear .45s cubic-bezier(.16, 1, .3, 1) both;
+}
+html[data-theme] .orbital-art g[stroke="var(--gold)"] circle:nth-child(1) { animation-delay: .22s; }
+html[data-theme] .orbital-art g[stroke="var(--gold)"] circle:nth-child(2) { animation-delay: .58s; }
+html[data-theme] .orbital-art g[stroke="var(--gold)"] circle:nth-child(3) { animation-delay: .96s; }
+html[data-theme] .orbital-art g[stroke="var(--gold)"] circle:nth-child(4) { animation-delay: 1.3s; }
+
+html[data-theme] .registration-mark {
+  transition: transform .8s cubic-bezier(.16, 1, .3, 1);
+}
+html[data-theme] .section-caption.is-revealed .registration-mark {
+  transform: rotate(90deg);
+}
+
+html[data-theme] .save-frame .gallery-zoom {
+  transition: transform .25s ease, border-color .25s ease;
+}
+html[data-theme] .save-frame:hover .gallery-zoom,
+html[data-theme] .gallery-open:focus-visible .gallery-zoom {
+  transform: scale(1.06);
+  border-color: var(--archive-gold-edge);
+}
+
+html[data-theme] .trail-entry > a .ui-icon,
+html[data-theme] .guestbook-email > .ui-icon,
+html[data-theme] .gallery-source .ui-icon,
+html[data-theme] .panel-link > span,
+html[data-theme] .mission-destinations a > span {
+  transition: transform .25s cubic-bezier(.16, 1, .3, 1);
+}
+html[data-theme] .trail-entry > a:hover .ui-icon,
+html[data-theme] .trail-entry > a:focus-visible .ui-icon,
+html[data-theme] .guestbook-email:hover > .ui-icon,
+html[data-theme] .guestbook-email:focus-visible > .ui-icon,
+html[data-theme] .gallery-source:hover .ui-icon,
+html[data-theme] .gallery-source:focus-visible .ui-icon,
+html[data-theme] .panel-link:hover > span,
+html[data-theme] .panel-link:focus-visible > span,
+html[data-theme] .mission-destinations a:hover > span,
+html[data-theme] .mission-destinations a:focus-visible > span {
+  transform: translate(3px, -3px);
+}
+
+html[data-theme] .gallery-dialog[open] {
+  animation: archive-dialog-in .26s cubic-bezier(.16, 1, .3, 1) both;
+}
+html[data-theme] .gallery-full-image.is-switching {
+  animation: archive-image-swap .28s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-theme] .status-dot,
+  html[data-theme] .orbital-art circle[stroke-dasharray="2 7"],
+  html[data-theme] .hero .orbital-art > ellipse,
+  html[data-theme] .orbital-art > path[stroke="var(--gold)"],
+  html[data-theme] .orbital-art g[stroke="var(--gold)"] circle,
+  html[data-theme] .gallery-dialog[open],
+  html[data-theme] .gallery-full-image.is-switching {
+    animation: none !important;
+  }
+  html[data-theme] .registration-mark,
+  html[data-theme] .save-frame .gallery-zoom,
+  html[data-theme] .trail-entry > a .ui-icon,
+  html[data-theme] .guestbook-email > .ui-icon,
+  html[data-theme] .gallery-source .ui-icon,
+  html[data-theme] .panel-link > span,
+  html[data-theme] .mission-destinations a > span {
+    transition: none !important;
+  }
+}
+:root[data-motion="paused"] .status-dot,
+:root[data-motion="paused"] .orbital-art circle[stroke-dasharray="2 7"],
+:root[data-motion="paused"] .hero .orbital-art > ellipse,
+:root[data-motion="paused"] .orbital-art > path[stroke="var(--gold)"],
+:root[data-motion="paused"] .orbital-art g[stroke="var(--gold)"] circle,
+:root[data-motion="paused"] .gallery-dialog[open],
+:root[data-motion="paused"] .gallery-full-image.is-switching {
+  animation: none !important;
+}
+:root[data-motion="paused"] .registration-mark,
+:root[data-motion="paused"] .save-frame .gallery-zoom,
+:root[data-motion="paused"] .trail-entry > a .ui-icon,
+:root[data-motion="paused"] .guestbook-email > .ui-icon,
+:root[data-motion="paused"] .gallery-source .ui-icon,
+:root[data-motion="paused"] .panel-link > span,
+:root[data-motion="paused"] .mission-destinations a > span {
+  transition: none !important;
 }
