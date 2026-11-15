@@ -1,5 +1,6 @@
-(() => {
+regionDecision.then(allowed => {
   'use strict';
+  if (!allowed) return;
   const section = document.querySelector('#guestbook');
   if (!section) return;
   const repository = 'HadesScience/hadesscience-personal-website';
@@ -90,6 +91,4 @@
     }, {rootMargin:'200px'});
     observer.observe(section);
   } else loadComments(true);
-})();
-
-
+});

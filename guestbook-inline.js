@@ -1,5 +1,6 @@
-(() => {
+regionDecision.then(allowed => {
   'use strict';
+  if (!allowed) return;
   const section = document.querySelector('#guestbook');
   const widget = document.querySelector('#guestbook-widget');
   const status = document.querySelector('#guestbook-inline-status');
@@ -47,5 +48,4 @@
     }, {rootMargin:'250px'});
     observer.observe(section);
   } else loadEditor();
-})();
-
+});

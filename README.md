@@ -66,3 +66,11 @@ Minecraft 项目为 Create Train、GuidedMod、Create Little Sorcery，链接到
 ## 虚拟生活内容范围
 
 个人介绍与探索计划仅记录数字世界中的经历：整合包与存档、铁路与移动机械、游戏旅程、建筑还原、AI 辅助角色模型实验，以及相关工具。作品链接区分游戏实况、通关感想与实验记录；模型实验不标记为已完成或可下载成品。铁路规模为视频拍摄时的记录，不代表存档当前状态。五种语言同步维护，现实生活经历不纳入此页面。
+
+## 地区链接试验
+
+`cloudflare/region-worker.mjs` 是独立的 Cloudflare Worker。测试部署时只将它绑定到测试域名的 `/_region`，并让预览站同域请求这个路径。正式上线时才为对外提供页面的主机名添加精确的 `/_region` 路由（例如 `hadesscience.com/_region`）；其他路径仍由 GitHub Pages 提供。不要为此接口配置强制缓存规则。
+
+接口仅返回 `showInternationalLinks`，不返回 IP 或国家代码，且不允许缓存。中国大陆（`CN`）、无法识别、接口不可用或禁用 JavaScript 时，页面隐藏境外平台入口。五种语言共用此策略。B 站、站内图片和联系邮箱仍可使用；GitHub、Modrinth、YouTube、X、TikTok、画廊外链及 GitHub 留言组件只在地区判定允许时显示。新增境外链接应使用 `data-regional-href` 替代 `href`；依赖境外服务的界面使用 `data-regional-only` 并在 `regionDecision` 通过后才启动请求。
+
+此功能按访问出口 IP 控制界面展示。它不限制访客直接访问外部网站，也不会从静态源文件中删除链接。

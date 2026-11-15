@@ -6,6 +6,17 @@ const tabs = $$('[data-mission]');
 const panels = $$('.mission-panel');
 const search = $('#channel-search');
 const channels = $$('.channel');
+let showInternationalLinks = false;
+const regionDecision = (async () => {
+  try {
+    const response = await fetch('/_region', {
+      cache: 'no-store', redirect: 'error', signal: AbortSignal.timeout(4000)
+    });
+    return response.ok && (await response.json()).showInternationalLinks === true;
+  } catch {
+    return false;
+  }
+})();
 function updateClock() {
   const now = new Date();
   $('#utc-clock').textContent = now.toISOString().slice(11, 19);
@@ -70,12 +81,15 @@ tabs.forEach((tab, index) => {
 function filterChannels() {
   const query = search.value.trim().toLocaleLowerCase();
   let count = 0;
+  let total = 0;
   channels.forEach(channel => {
-    const matches = `${channel.textContent} ${channel.dataset.keywords}`.toLocaleLowerCase().includes(query);
+    const available = showInternationalLinks || !channel.hasAttribute('data-regional-href');
+    if (available) total++;
+    const matches = available && `${channel.textContent} ${channel.dataset.keywords}`.toLocaleLowerCase().includes(query);
     channel.hidden = !matches;
     if (matches) count++;
   });
-  I18n.message($('#channel-count'), 'search.count', {shown:String(count).padStart(2, '0'), total:channels.length});
+  I18n.message($('#channel-count'), 'search.count', {shown:String(count).padStart(2, '0'), total});
   $('.empty-channels').hidden = count > 0;
 }
 search.addEventListener('input', filterChannels);
@@ -247,7 +261,7 @@ function displayGallery(index) {
   $('.gallery-full-image').alt = preview.alt;
   $('#gallery-dialog-title').textContent = preview.alt;
   $('.gallery-counter').textContent = `${String(galleryIndex + 1).padStart(2, '0')} / ${String(galleryButtons.length).padStart(2, '0')}`;
-  $('.gallery-original').href = button.dataset.original;
+  if (showInternationalLinks) $('.gallery-original').href = button.dataset.original;
 }
 galleryButtons.forEach((button, index) => {
   button.setAttribute('aria-label', `${I18n.t('gallery.open')}: ${button.querySelector('img').alt}`);
@@ -272,4 +286,13 @@ galleryDialog.addEventListener('click', event => { if (event.target === galleryD
 galleryDialog.addEventListener('close', () => {
   document.documentElement.classList.remove('gallery-active');
   galleryTrigger?.focus({preventScroll: true});
+});
+
+regionDecision.then(allowed => {
+  if (!allowed) return;
+  showInternationalLinks = true;
+  $$('[data-regional-href]').forEach(link => { link.href = link.dataset.regionalHref; });
+  document.documentElement.dataset.internationalLinks = 'visible';
+  if (galleryDialog.open) displayGallery(galleryIndex);
+  filterChannels();
 });
