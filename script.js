@@ -82,9 +82,15 @@ function filterChannels() {
   const query = search.value.trim().toLocaleLowerCase();
   let count = 0;
   let total = 0;
+  let availableIndex = 0;
   channels.forEach(channel => {
     const available = showInternationalLinks || !channel.hasAttribute('data-regional-href');
-    if (available) total++;
+    if (available) {
+      total++;
+      availableIndex++;
+      const indexEl = channel.querySelector('.channel-index');
+      if (indexEl) indexEl.textContent = String(availableIndex).padStart(2, '0');
+    }
     const matches = available && `${channel.textContent} ${channel.dataset.keywords}`.toLocaleLowerCase().includes(query);
     channel.hidden = !matches;
     if (matches) count++;
@@ -293,6 +299,7 @@ regionDecision.then(allowed => {
   showInternationalLinks = true;
   $$('[data-regional-href]').forEach(link => { link.href = link.dataset.regionalHref; });
   document.documentElement.dataset.internationalLinks = 'visible';
+  I18n.message($('.guestbook-email small'), 'guest.email');
   if (galleryDialog.open) displayGallery(galleryIndex);
   filterChannels();
 });

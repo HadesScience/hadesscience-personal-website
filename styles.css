@@ -1244,3 +1244,31 @@ html[data-theme="ivory"] .gallery-counter{color:#2d4f7c}
 html:not([data-international-links="visible"]) :is([data-regional-href], [data-regional-only]) {
   display: none !important;
 }
+html:not([data-international-links="visible"]) .trail-entry:not(:has(> a:not([data-regional-href]))) > p {
+  margin-bottom: 0;
+}
+html:not([data-international-links="visible"]) .record-card:not(:has(.record-link:not([data-regional-href]))) .record-meta {
+  padding-bottom: 0;
+}
+html:not([data-international-links="visible"]) .channel-directory {
+  grid-template-columns: 1fr;
+}
+@media (min-width: 761px) {
+  html:not([data-international-links="visible"]) .guestbook-layout {
+    grid-template-columns: 1fr;
+  }
+  html:not([data-international-links="visible"]) .guestbook-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+    column-gap: 9%;
+    align-items: center;
+  }
+  html:not([data-international-links="visible"]) .guestbook-intro > :not(.guestbook-email) {
+    grid-column: 1;
+  }
+  html:not([data-international-links="visible"]) .guestbook-email {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    margin-top: 0;
+  }
+}
